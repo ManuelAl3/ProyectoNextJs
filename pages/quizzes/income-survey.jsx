@@ -23,7 +23,7 @@ export default function IncomeSurvey(){
 
     return (
         <>
-            {/*<Nabvar />*/}
+            <Nabvar />
             <div className="title-main-quizz block">
                 <p> {forms.map(post => {
                     return (

@@ -1,10 +1,11 @@
-import ButtonSave from "../../components/buttonSave";
-import MessageInfo from "../../components/messageInfo";
-import Nabvar from "../../components/navbar";
+import Layout from '../../components/layout/Layout';
+import Nabvar from '../../components/navbar';
+import ButtonSave from '../../components/buttonSave';
+import MessageInfo from '../../components/messageInfo';
 
 export default function StudyEconomic() {
     return(
-        <>
+        <Layout>
             <Nabvar />
 
             <div className="title-main-quizz block">
@@ -314,6 +315,6 @@ export default function StudyEconomic() {
                 <ButtonSave />
 
             </div>
-        </>
+        </Layout>
     );
 }

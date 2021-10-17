@@ -1,9 +1,11 @@
-import Nabvar from "../../components/navbar";
-import MessageInfo from "../../components/messageInfo";
+import Layout from '../../components/layout/Layout';
+import Nabvar from '../../components/navbar';
+import ButtonSave from '../../components/buttonSave';
+import MessageInfo from '../../components/messageInfo';
 
 export default function GraduateSurvey() {
     return(
-        <>
+        <Layout>
             <Nabvar />
 
             <div className="title-main-quizz block">
@@ -412,8 +414,8 @@ export default function GraduateSurvey() {
                     </div>
                 </div>
                 {/* Botón de guardar encuesta*/}
-                {/* button - save*/}
+                <ButtonSave />
             </div>
-        </>
+        </Layout>
     );
 }

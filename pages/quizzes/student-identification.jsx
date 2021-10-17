@@ -1,9 +1,11 @@
-import MessageInfo from "../../components/messageInfo";
-import Nabvar from "../../components/navbar"
+import Layout from '../../components/layout/Layout';
+import Nabvar from '../../components/navbar';
+import ButtonSave from '../../components/buttonSave';
+import MessageInfo from '../../components/messageInfo';
 
 export default function StudentIdentification(){
     return(
-        <>
+        <Layout>
             <Nabvar />
 
             <div className="title-main-quizz block">
@@ -568,6 +570,6 @@ export default function StudentIdentification(){
                 {/* Botón de guardar encuesta*/}
                 <ButtonSave />
             </div>
-        </>
+        </Layout>
     );
 }
