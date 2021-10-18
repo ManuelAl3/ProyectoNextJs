@@ -5,7 +5,7 @@ export default function Layout({ children, title, description }) {
     return (
       <>
         <Head>
-          <tittle> {title} </tittle>
+          <title> {title} </title>
         </Head>
 
         <Nabvar />
