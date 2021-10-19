@@ -1,8 +1,6 @@
 {
+  "titulo": "Encuesta de ingreso al programa de estudios de ingeniería en software",
   "preguntas": [
-    {
-      "titulo": "Encuesta de ingreso al programa de estudios de ingeniería en software"
-    },
     {
       "id": 1,
       "question_id": "Escuela de procedencia: "
@@ -27,7 +25,7 @@
       ]
     },
     {
-      "id": 4,
+      "id":4,
       "question_id": "¿Qué te motiva a estudiar Ingeniería en Software?",
       "answerCheckBox": [
         {
