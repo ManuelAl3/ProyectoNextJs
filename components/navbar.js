@@ -36,20 +36,20 @@ export default function Nabvar() {
                 <li>
                     <a href="#">
                         <i className='bx bx-folder'></i>
-                        <span className="links_name">File Manager</span>
+                        <span className="links_name">Encuestas</span>
                     </a>
-                    <span className="tooltip">Files</span>
+                    <span className="tooltip">Encuestas</span>
                 </li>
-                <li className="profile">
+                {/* <li className="profile">
                     <div className="profile-details">
-                        <img src="../../public/images/profile.jpg" alt="profileImg" />
+                        <img src="../public/images/profile.jpg" alt="profileImg" />
                         <div class ="name_job">
                         <div class ="name">Manuel Alberto</div>
                         <div class ="job">Alumno</div>
                         </div>
                     </div>
                     <i className='bx bx-log-out' id="log_out"></i>
-                </li>
+                </li>*/}
             </ul>
         </div>
     );

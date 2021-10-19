@@ -1,0 +1,27 @@
+{
+  "preguntas": [
+    {
+      "id": 1,
+      "question_id": "Escuela de procedencia: "
+    },
+    {
+      "id": 2,
+      "question_id": "Especialidad cursada en tu escuela de procedencia:"
+    },
+    {
+      "id": 3,
+      "question_id": "¿Cómo te enteraste de la Universidad Politécnica de Durango?",
+      "answerRadio": [
+          {
+              "radio1":"Páginas Web",
+              "radio2":"Redes Sociales",
+              "radio3":"Medios de comunicación (televisión, radio, periódico, otro)",
+              "radio4": "Visita guiada programada por mi bachillerato",
+              "radio5": "Pendones",
+              "radio6": "Recomendación de alguien más",
+              "radio7": "Otro"
+          }
+      ]
+    }
+  ]
+}

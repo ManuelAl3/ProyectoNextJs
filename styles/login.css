@@ -18,10 +18,10 @@
         align-items: center;
         flex-direction: column;
         justify-content: space-between;
-        
+
     }
 
-    /*Contenedor del registro y login lado izquierdo*/
+    /* Contenedor del registro y login lado izquierdo */
     .container-register-left,
     .container-login-left {
         display: none;

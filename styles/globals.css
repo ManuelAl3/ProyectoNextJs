@@ -5,11 +5,6 @@ body {
   min-height: 100vh;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
 * {
   top: 0;
   bottom: 0;
@@ -20,7 +15,7 @@ a {
   font-family: "Poppins" , sans-serif;
 }
 
-/*Variables globales*/
+/* Variables globales */
 :root {
   --navbar-color-background: ;
   --bg-body-color: linear-gradient(to right, #f0f0f0, #f6f6f6);
@@ -35,14 +30,14 @@ a {
   --main-icon-tdf: rgb(133, 133, 133);
 }
 
-/*Contenedor registro y login*/
+/* Contenedor registro y login */
 .section-register,
 .section-login {
     display: flex;
     height: 100vh;
 }
 
-/*Contenedor del registro y login lado izquierdo*/
+/* Contenedor del registro y login lado izquierdo */
 .container-register-left,
 .container-login-left {
     display: flex;
@@ -53,8 +48,8 @@ a {
     width:60%;
 }
 
-/*Contenedor del registro y login lado derecho*/
-.container-register-right, 
+/* Contenedor del registro y login lado derecho */
+.container-register-right,
 .container-login-right {
     background-color: rgb(255, 255, 255);
     backdrop-filter:inherit;
@@ -68,7 +63,7 @@ a {
     animation: transicion 1.5s ease-out;
 }
 
-/*Transición en login y registro*/
+/* Transición en login y registro */
 @keyframes transicion{
     0%{
         opacity: 0;
@@ -95,7 +90,7 @@ a {
     width: 75%;
 }
 
-/*Inputs*/
+/* Inputs */
 .is-purple{
     border-color: var(--main-bg-color);
     border: none;
@@ -108,17 +103,17 @@ a {
     font-weight: lighter;
 }
 
-/*Select*/
+/* Select */
 .select {
     border-bottom: 2px solid rgb(195, 195, 195);
 }
 
-/*Icono*/
+/* Icono */
 i.fas {
     color: var(--main-icon-color-hover);
 }
 
-/*Botón*/
+/* Botón */
 .button.is-purple {
     background-color: var(--main-bg-color);
     color: var(--main-text-color-button);
@@ -161,7 +156,7 @@ button.is-redounded-main:hover {
     color: var(--main-color);
 }
 
-/*Codigo hover*/
+/* Codigo hover */
 .hashtag:hover {
     color: var(--main-color);
 }
@@ -171,7 +166,7 @@ input.is-purple:hover {
     border-color: var(--main-bg-color);
 }
 
-/*Icono hover*/
+/* Icono hover */
 i.fas:hover {
     color: var(--main-icon-color-hover);
 }
@@ -180,7 +175,7 @@ select:hover {
     box-shadow: 0 0 0 0.1rem var(--main-bd-f-color);
 }
 
-/*Boton loguear y registrarse hover*/
+/* Boton loguear y registrarse hover */
 .section-login-clic button:hover, 
 .section-register-clic button:hover {
     color: rgb(133, 133, 133);
