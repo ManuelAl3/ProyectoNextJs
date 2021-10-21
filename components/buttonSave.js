@@ -1,9 +1,9 @@
 export default function ButtonSave() {
     return(
-        <div class="btn-section block">
-            <label class="label">
-                <p class="control">
-                    <button class="button is-purple-quizz-save" type="submit">
+        <div className="btn-section block">
+            <label className="label">
+                <p className="control">
+                    <button className="button is-purple-quizz-save" type="submit">
                         Guardar
                     </button>
                 </p>
