@@ -8,39 +8,26 @@ import { useRouter } from 'next/router';
 
 export default function IncomeSurvey({data}){
     const { register,handleSubmit, formState: { errors } } = useForm();
+    const router = useRouter();
+    let forms = data;
+
+    const alertActivated = () => {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Finalizado",
+        showConfirmButton: false,
+        timer: 1600,
+      });
+      setTimeout(() => {
+        router.replace("/polls");
+      }, 1600);
+    };
 
     const onSubmit = data => {
         console.log(data);
+        alertActivated();
     }
-    const router = useRouter();
-
-    let forms = data;
-
-    const [button, activityButton] = useState(false);
-
-    const handleInputChange = () => {
-
-    };
-
-    const alert = (e) => {
-        e.preventDefault;
-        Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Finalizado",
-            showConfirmButton: false,
-            timer: 1600,
-        });
-        //router.replace('/polls');
-    }
-
-    const successAlert = (e) => {
-      if (errors.answer == true && errors.answer_2 == true) {
-        e.preventDefault;
-      } else {
-        alert(e);
-      }
-    };
 
     return (
       <>
@@ -81,7 +68,7 @@ export default function IncomeSurvey({data}){
                     })}
                     name="answer"
                     value={forms.answer}
-                    onChange={handleInputChange}
+                    /*onChange={handleInputChange}*/
                     className="input is-purple"
                     type="text"
                     placeholder="respuesta"
@@ -112,7 +99,7 @@ export default function IncomeSurvey({data}){
                     })}
                     name="answer_2"
                     value={forms.answer}
-                    onChange={handleInputChange}
+                    /*onChange={handleInputChange}*/
                     className="input is-purple"
                     type="text"
                     placeholder="respuesta"
@@ -282,19 +269,9 @@ export default function IncomeSurvey({data}){
             </div>
           </div>
 
-          {/* Botón de guardar encuesta
+          {/* Botón de guardar encuesta*/}
           <ButtonSave />
-          */}
 
-          <div className="btn-section block">
-            <label className="label">
-              <p className="control">
-                <button className="button is-purple-quizz-save" type="submit" /*disabled={button ? true : false}*/ onClick={(e) => successAlert(e)} >
-                  Guardar
-                </button>
-              </p>
-            </label>
-          </div>
         </form>
       </>
     );
