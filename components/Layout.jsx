@@ -9,27 +9,38 @@ export default function Layout({ children, title, description, props}) {
             href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
             rel="stylesheet"
           />
-          {/*GOOGLE FONTS */}
+          {/* GOOGLE FONTS */}
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
           <link
             href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap"
             rel="stylesheet"
           />
+          <link
+            href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+            rel="stylesheet"
+          />
+
           <title> {title} </title>
         </Head>
 
-        <Nabvar />
+        {/*<Nabvar />*/}
 
-        <main> {children} </main>
-
-        {/*SCRIPTS*/}
-        <script src="/javascripts/particles.min.js"></script>
-        <script src="/javascripts/particles.min.js"></script>
-        <script src="/javascripts/app-particles.js"></script>
-        <script src="/javascripts/register.js"></script>
-        <script src="/javascripts/navbar.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <main>
+          {children}
+          {/*SCRIPTS*/}
+          <script src="/javascripts/particles.min.js"></script>
+          <script src="/javascripts/particles.min.js"></script>
+          <script src="/javascripts/app-particles.js"></script>
+          <script src="/javascripts/register.js"></script>
+          <script src="/javascripts/navbar.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+          {/* FONT AWESOME */}
+          <script
+            src="https://kit.fontawesome.com/6f85729b61.js"
+            crossorigin="anonymous"
+          ></script>
+        </main>
       </>
     );
 }

@@ -1,4 +1,4 @@
-import Layout from '../../components/layout/Layout';
+import Layout from '../../components/Layout';
 import Nabvar from '../../components/navbar';
 import ButtonSave from '../../components/buttonSave';
 import MessageInfo from '../../components/messageInfo';
