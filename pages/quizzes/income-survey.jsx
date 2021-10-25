@@ -3,8 +3,9 @@ import ButtonSave from '../../components/buttonSave';
 import MessageInfo from '../../components/messageInfo';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
-import { useState } from 'react';
 import { useRouter } from 'next/router';
+// reactstrap components
+import { Alert } from "reactstrap";
 
 export default function IncomeSurvey({data}){
     const { register,handleSubmit, formState: { errors } } = useForm();
@@ -31,7 +32,8 @@ export default function IncomeSurvey({data}){
 
     return (
       <>
-        <div className="title-main-quizz block">
+      <Layout>
+        <div className="title-main-quizz blockzz">
           <p>
             {" "}
             {forms.map((data) => {
@@ -74,9 +76,9 @@ export default function IncomeSurvey({data}){
                     placeholder="respuesta"
                   />
                   {errors.answer && (
-                    <span className="error-message-field">
-                      {errors.answer.message}
-                    </span>
+                      <Alert color="danger">
+                        {errors.answer.message}
+                      </Alert>
                   )}
                 </p>
               </div>
@@ -105,9 +107,9 @@ export default function IncomeSurvey({data}){
                     placeholder="respuesta"
                   />
                   {errors.answer_2 && (
-                    <span className="error-message-field">
+                    <Alert color="danger">
                       {errors.answer_2.message}
-                    </span>
+                    </Alert>
                   )}
                 </p>
               </div>
@@ -273,6 +275,7 @@ export default function IncomeSurvey({data}){
           <ButtonSave />
 
         </form>
+      </Layout>
       </>
     );
 }

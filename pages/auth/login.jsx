@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Login() {
 
     return (
@@ -65,9 +67,11 @@ export default function Login() {
                 </label>
               </div>
               <div className="section-register-clic">
-                <p>
-                  ¿No tienes una cuenta?<a href="/signup">Regístrate</a>
-                </p>
+                <Link href="/auth/signup">
+                  <p>
+                    ¿No tienes una cuenta?<a>Regístrate</a>
+                  </p>
+                </Link>
               </div>
             </form>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
