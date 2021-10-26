@@ -16,7 +16,7 @@ export default function Login() {
             </svg>
             <form
               className="container-login m-auto"
-              action="/login"
+              action="/"
               method="POST"
             >
               <div className="field">
@@ -53,9 +53,11 @@ export default function Login() {
                 </label>
               </div>
               <div className="field">
-                <a className="hashtag" href="/password-recovery">
-                  Olvidé mi contraseña
-                </a>
+                <Link href="/auth/forgotPassword">
+                  <a className="hashtag">
+                    Olvidé mi contraseña
+                  </a>
+                </Link>
               </div>
               <div className="field">
                 <label className="label">

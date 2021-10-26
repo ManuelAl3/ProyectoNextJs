@@ -17,7 +17,7 @@ export default function Signup() {
             </span>
             <form
               className="container-register m-auto"
-              action="/signup"
+              action="/auth/signup"
               method="POST"
             >
               <div className="label">
