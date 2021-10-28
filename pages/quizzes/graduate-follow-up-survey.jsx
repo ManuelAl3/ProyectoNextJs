@@ -1,8 +1,32 @@
 import Layout from '../../components/Layout';
 import ButtonSave from '../../components/buttonSave';
 import MessageInfo from '../../components/messageInfo';
+import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
+import { useRouter } from 'next/router';
 
 export default function GraduateFollowUp(){
+   const { register,handleSubmit, formState: { errors } } = useForm();
+    const router = useRouter();
+
+    const alertActivated = () => {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Finalizado",
+        showConfirmButton: false,
+        timer: 1600,
+      });
+      setTimeout(() => {
+        router.replace("/polls");
+      }, 1600);
+    };
+
+    const onSubmit = data => {
+        console.log(data);
+        alertActivated();
+    }
+
     return (
       <Layout title="Encuesta de seguimiento de egresados">
         <div className="title-main-quizz block">
@@ -13,32 +37,31 @@ export default function GraduateFollowUp(){
 
         <div className="quizz-main m-auto">
           <div className="box">
-            Checkbox
             <div className="block">
               <label className="label">
                 Actualmente vive en: <span className="span-req">*</span>
               </label>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" {...register("radio", {required: true})} />
                   Ciudad de Durango
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   En otro municipio de Durango
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   En otro estado del país
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Fuera del país
                 </label>
               </div>
@@ -50,13 +73,13 @@ export default function GraduateFollowUp(){
               </label>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Si
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   No
                 </label>
               </div>
@@ -67,13 +90,13 @@ export default function GraduateFollowUp(){
               </label>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Si
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   No
                 </label>
               </div>
@@ -108,31 +131,31 @@ export default function GraduateFollowUp(){
               </label>
               <div className="control">
                 <label className="radio">
-                  <input type="radio" name="answer" />
+                  <input type="radio" className="m-rght" name="answer" />
                   Por no tener interés en ello
                 </label>
               </div>
               <div className="control">
                 <label className="radio">
-                  <input type="radio" name="answer" />
+                  <input type="radio" className="m-rght" name="answer" />
                   Por falta de tiempo
                 </label>
               </div>
               <div className="control">
                 <label className="radio">
-                  <input type="radio" name="answer" />
+                  <input type="radio" className="m-rght" name="answer" />
                   Por falta de información
                 </label>
               </div>
               <div className="control">
                 <label className="radio">
-                  <input type="radio" name="answer" />
+                  <input type="radio" className="m-rght" name="answer" />
                   Por problemas económicos
                 </label>
               </div>
               <div className="control">
                 <label className="radio">
-                  <input type="radio" name="answer" />
+                  <input type="radio" className="m-rght" name="answer" />
                   Está en trámite la titulación
                 </label>
               </div>
@@ -160,13 +183,13 @@ export default function GraduateFollowUp(){
               </label>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Si
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   No
                 </label>
               </div>
@@ -178,13 +201,13 @@ export default function GraduateFollowUp(){
               </label>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   En curso
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Concluido
                 </label>
               </div>
@@ -230,37 +253,37 @@ export default function GraduateFollowUp(){
               </label>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Cursos en línea
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Cursos precenciales
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Diplomados
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Certificaciones
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Maestría
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Doctorado
                 </label>
               </div>
@@ -281,13 +304,13 @@ export default function GraduateFollowUp(){
               </label>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Si
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   No
                 </label>
               </div>
@@ -298,13 +321,13 @@ export default function GraduateFollowUp(){
               </label>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Si
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   No
                 </label>
               </div>
@@ -318,19 +341,19 @@ export default function GraduateFollowUp(){
               </label>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   He enviado CV a empresas pero no he recibido respuesta
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   No me interesa trabajar en algo relacionado a mi profeción
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   No he encontrado una oportunidad laboral que me convenza
                 </label>
               </div>
@@ -393,13 +416,13 @@ export default function GraduateFollowUp(){
               </label>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Si
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   No
                 </label>
               </div>
@@ -411,43 +434,43 @@ export default function GraduateFollowUp(){
               </label>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Falta de habilidad y destrezas propias
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Falta de interés por trabajar en su área
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Conocimientos insuficientes
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Conocimientos obsoletos
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Falta de experiencia
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Dificultad para aplicar conocimientos adquiridos
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Falta de fuentes de empleo
                 </label>
               </div>
@@ -472,13 +495,13 @@ export default function GraduateFollowUp(){
               <label className="label">Usted trabaja:</label>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Dentro del estado de Durango
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Fuera del estado de Durango
                 </label>
               </div>
@@ -490,14 +513,14 @@ export default function GraduateFollowUp(){
               </label>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Planeo proyectos de software considerando estándares de
                   calidad.
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Analizo requerimientos para automatizar y/u optimizar procesos
                   en las organizaciones para el desarrollo y/o implementación de
                   proyectos de software.
@@ -505,20 +528,20 @@ export default function GraduateFollowUp(){
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Evalúo proyectos de software bajo estándares de calidad.
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Diseño proyectos de software para automatizar y optimizar
                   procesos en las organizaciónes.
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Desarrollo actividades para la administraación de proyectos de
                   software con estándares de calidad, para automatizar y
                   optimizar procesos en las organizaciones.
@@ -526,34 +549,34 @@ export default function GraduateFollowUp(){
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Realizo actividades de actualización afines a mi formación
                   profecional.
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Desarrollo software para empresas o instituciones.
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Participo en actividades académicas afines a mi formación
                   profecional.
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Participo en actividades de investigación afines a mi
                   formación profecional.
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="m-rght" />
                   Participo como socio o tengo mi propia empresa de desarrollo
                   de software en donde se generan proyectos para la mejora
                   organizacional.

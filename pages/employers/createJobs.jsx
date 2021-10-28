@@ -35,6 +35,16 @@ export default function createJobs() {
         <Image
           priority
           src="/images/employers.svg"
+          height={200}
+          width={300}
+          alt="..."
+        />
+      </div>
+
+      <div className={styles.img2}>
+        <Image
+          priority
+          src="/images/investing.svg"
           height={300}
           width={300}
           alt="..."
@@ -160,9 +170,20 @@ export default function createJobs() {
             </div>
           </div>
         </div>
-
         <ButtonSave></ButtonSave>
       </form>
+      <div>
+          <div className={styles.burbuja}></div>
+          <div className={styles.burbuja}></div>
+          <div className={styles.burbuja}></div>
+          <div className={styles.burbuja}></div>
+          <div className={styles.burbuja}></div>
+          <div className={styles.burbuja}></div>
+          <div className={styles.burbuja}></div>
+          <div className={styles.burbuja}></div>
+          <div className={styles.burbuja}></div>
+          <div className={styles.burbuja}></div>
+      </div>
     </>
   );
 }

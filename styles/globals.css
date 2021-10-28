@@ -108,6 +108,11 @@ body {
     border-bottom: 2px solid rgb(195, 195, 195);
 }
 
+/* Check box y radios*/
+.m-rght {
+    margin-right: 10px;
+}
+
 /* Icono */
 i.fas {
     color: var(--main-icon-color-hover);

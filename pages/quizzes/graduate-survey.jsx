@@ -24,19 +24,19 @@ export default function GraduateSurvey() {
                     <div className="section-check block">
                         <div className="control">
                             <label className="radio">
-                                <input type="radio" name="answer" />
+                                <input type="radio" className="m-rght" name="answer" />
                                 Enero - Abril
                             </label>
                         </div>
                         <div className="control">
                             <label className="radio">
-                                <input type="radio" name="answer" />
+                                <input type="radio" className="m-rght" name="answer" />
                                 Mayo - Agosto
                             </label>
                         </div>
                         <div className="control">
                             <label className="radio">
-                                <input type="radio" name="answer" />
+                                <input type="radio" className="m-rght" name="answer" />
                                 Septiembre - Diciembre
                             </label>
                         </div>
@@ -104,13 +104,13 @@ export default function GraduateSurvey() {
                             <label className="label">¿Realizaste proceso de dualidad? </label>
                             <div className="section-check">
                                 <label className="checkbox">
-                                    <input type="checkbox" />
+                                    <input type="checkbox" className="m-rght" />
                                     Si
                                 </label>
                             </div>
                             <div className="section-check">
                                 <label className="checkbox">
-                                    <input type="checkbox" />
+                                    <input type="checkbox" className="m-rght" />
                                     No
                                 </label>
                             </div>
@@ -121,19 +121,19 @@ export default function GraduateSurvey() {
                             <label className="label">En qué cuatrimestre(s): </label>
                             <div className="section-check">
                                 <label className="checkbox">
-                                    <input type="checkbox" />
+                                    <input type="checkbox" className="m-rght" />
                                     7mo
                                 </label>
                             </div>
                             <div className="section-check">
                                 <label className="checkbox">
-                                    <input type="checkbox" />
+                                    <input type="checkbox" className="m-rght" />
                                     8vo
                                 </label>
                             </div>
                             <div className="section-check">
                                 <label className="checkbox">
-                                    <input type="checkbox" />
+                                    <input type="checkbox" className="m-rght" />
                                     9no
                                 </label>
                             </div>
@@ -162,13 +162,13 @@ export default function GraduateSurvey() {
                         <label className="label">¿Trabajas actualmente en algún perfil relacionado a tu licenciatura? </label>
                         <div className="section-check">
                             <label className="checkbox">
-                                <input type="checkbox" />
+                                <input type="checkbox" className="m-rght" />
                                 Si
                             </label>
                         </div>
                         <div className="section-check">
                             <label className="checkbox">
-                                <input type="checkbox" />
+                                <input type="checkbox" className="m-rght" />
                                 No
                             </label>
                         </div>
@@ -198,25 +198,25 @@ export default function GraduateSurvey() {
                         <div className="section-check block">
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     1 Insuficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     2 Deficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     3 Suficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     4 Bueno
                                 </label>
                             </div>
@@ -229,25 +229,25 @@ export default function GraduateSurvey() {
                         <div className="section-check block">
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     1 Insuficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     2 Deficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     3 Suficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     4 Bueno
                                 </label>
                             </div>
@@ -260,25 +260,25 @@ export default function GraduateSurvey() {
                         <div className="section-check block">
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     1 Insuficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     2 Deficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     3 Suficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     4 Bueno
                                 </label>
                             </div>
@@ -292,25 +292,25 @@ export default function GraduateSurvey() {
                         <div className="section-check block">
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     1 Insuficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     2 Deficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     3 Suficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     4 Bueno
                                 </label>
                             </div>
@@ -323,25 +323,25 @@ export default function GraduateSurvey() {
                         <div className="section-check block">
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     1 Insuficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     2 Deficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     3 Suficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     4 Bueno
                                 </label>
                             </div>
@@ -356,25 +356,25 @@ export default function GraduateSurvey() {
                         <div className="section-check block">
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     1 Insuficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     2 Deficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     3 Suficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     4 Bueno
                                 </label>
                             </div>
@@ -388,25 +388,25 @@ export default function GraduateSurvey() {
                         <div className="section-check block">
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     1 Insuficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     2 Deficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     3 Suficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     4 Bueno
                                 </label>
                             </div>

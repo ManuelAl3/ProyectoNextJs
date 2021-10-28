@@ -24,19 +24,19 @@ export default function StudentIdentification(){
                     <div className="section-check block">
                         <div className="control">
                             <label className="radio">
-                                <input type="radio" name="answer" />
+                                <input type="radio" className="m-rght" name="answer" />
                                 Enero - Abril
                             </label>
                         </div>
                         <div className="control">
                             <label className="radio">
-                                <input type="radio" name="answer" />
+                                <input type="radio" className="m-rght" name="answer" />
                                 Mayo - Agosto
                             </label>
                         </div>
                         <div className="control">
                             <label className="radio">
-                                <input type="radio" name="answer" />
+                                <input type="radio" className="m-rght" name="answer" />
                                 Septiembre - Diciembre
                             </label>
                         </div>
@@ -96,19 +96,19 @@ export default function StudentIdentification(){
                         <div className="section-check">
                             <div className="control">
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     Femenino
                                 </label>
                             </div>
                             <div className="control">
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     Masculino
                                 </label>
                             </div>
                             <div className="control">
                                 <label className="radio">
-                                    <input type="radio" name="answer" />
+                                    <input type="radio" className="m-rght" name="answer" />
                                     otro
                                 </label>
                             </div>
@@ -266,13 +266,13 @@ export default function StudentIdentification(){
                         <label className="label">En caso de padecer alguna enfermedad ¿recibes tratamiento?: </label>
                         <div className="section-check">
                             <label className="checkbox">
-                                <input type="checkbox" />
+                                <input type="checkbox" className="m-rght" />
                                 Si
                             </label>
                         </div>
                         <div className="section-check">
                             <label className="checkbox">
-                                <input type="checkbox" />
+                                <input type="checkbox" className="m-rght" />
                                 No
                             </label>
                         </div>
@@ -351,7 +351,7 @@ export default function StudentIdentification(){
                         </div>
                         <div className="section-check field">
                             <label className="checkbox">
-                                <input type="checkbox" />
+                                <input type="checkbox" className="m-rght" />
                                 Mismo domicilio que el mio
                             </label>
                         </div>
@@ -492,7 +492,7 @@ export default function StudentIdentification(){
                         </div>
                         <div className="section-check field">
                             <label className="checkbox">
-                                <input type="checkbox" />
+                                <input type="checkbox" className="m-rght" />
                                 Mismo domicilio que el mio
                             </label>
                         </div>

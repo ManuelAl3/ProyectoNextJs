@@ -1,8 +1,6 @@
 import { useRouter } from 'next/router';
-import Swal from 'sweetalert2';
 
-export default function ButtonSave({initialButton}) {
-    const router = useRouter();
+export default function ButtonSave() {
     return(
         <div className="btn-section block">
             <label className="label">

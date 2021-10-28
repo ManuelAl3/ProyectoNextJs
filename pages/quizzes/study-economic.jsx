@@ -20,31 +20,31 @@ export default function StudyEconomic() {
                         <label className="label">1. Estado civil: <span className="span-req">*</span></label>
                         <div className="section-check">
                             <label className="checkbox">
-                                <input type="checkbox" />
+                                <input type="checkbox" className="m-rght" />
                                 Soltero(a)
                             </label>
                         </div>
                         <div className="section-check">
                             <label className="checkbox">
-                                <input type="checkbox" />
+                                <input type="checkbox" className="m-rght" />
                                 Casado(a)
                             </label>
                         </div>
                         <div className="section-check">
                             <label className="checkbox">
-                                <input type="checkbox" />
+                                <input type="checkbox" className="m-rght" />
                                 Unión libre
                             </label>
                         </div>
                         <div className="section-check">
                             <label className="checkbox">
-                                <input type="checkbox" />
+                                <input type="checkbox" className="m-rght" />
                                 Divorciado(a)
                             </label>
                         </div>
                         <div className="section-check">
                             <label className="checkbox">
-                                <input type="checkbox" />
+                                <input type="checkbox" className="m-rght" />
                                 Viudo(a)
                             </label>
                         </div>
@@ -56,13 +56,13 @@ export default function StudyEconomic() {
                         <label className="label">2. ¿Eres foráneo(a)? </label>
                         <div className="section-check">
                             <label className="checkbox">
-                                <input type="checkbox" />
+                                <input type="checkbox" className="m-rght" />
                                 Si
                             </label>
                         </div>
                         <div className="section-check">
                             <label className="checkbox">
-                                <input type="checkbox" />
+                                <input type="checkbox" className="m-rght" />
                                 No
                             </label>
                         </div>
@@ -212,13 +212,13 @@ export default function StudyEconomic() {
                         <label className="label">12. ¿Trabajas? <span className="span-req">*</span></label>
                         <div className="section-check">
                             <label className="checkbox">
-                                <input type="checkbox" />
+                                <input type="checkbox" className="m-rght" />
                                 Si
                             </label>
                         </div>
                         <div className="section-check">
                             <label className="checkbox">
-                                <input type="checkbox" />
+                                <input type="checkbox" className="m-rght" />
                                 No
                             </label>
                         </div>
@@ -256,13 +256,13 @@ export default function StudyEconomic() {
                         <label className="label">15. ¿Cuentas actualmente con alguna beca? <span className="span-req">*</span></label>
                         <div className="section-check">
                             <label className="checkbox">
-                                <input type="checkbox" />
+                                <input type="checkbox" className="m-rght" />
                                 Si
                             </label>
                         </div>
                         <div className="section-check">
                             <label className="checkbox">
-                                <input type="checkbox" />
+                                <input type="checkbox" className="m-rght" />
                                 No
                             </label>
                         </div>
@@ -286,25 +286,25 @@ export default function StudyEconomic() {
                         <label className="label">15. ¿Cuentas actualmente con alguna beca? </label>
                         <div className="section-check">
                             <label className="checkbox">
-                                <input type="checkbox" />
+                                <input type="checkbox" className="m-rght" />
                                 Mensual
                             </label>
                         </div>
                         <div className="section-check">
                             <label className="checkbox">
-                                <input type="checkbox" />
+                                <input type="checkbox" className="m-rght" />
                                 Bimestral
                             </label>
                         </div>
                         <div className="section-check">
                             <label className="checkbox">
-                                <input type="checkbox" />
+                                <input type="checkbox" className="m-rght" />
                                 Trimestral
                             </label>
                         </div>
                         <div className="section-check">
                             <label className="checkbox">
-                                <input type="checkbox" />
+                                <input type="checkbox" className="m-rght" />
                                 Anual
                             </label>
                         </div>

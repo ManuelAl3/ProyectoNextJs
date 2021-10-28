@@ -4,11 +4,49 @@ import MessageInfo from '../../components/messageInfo';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
-export default function IncomeSurvey({data}){
+import { db } from '../../firebase';
+import { collection, addDoc } from "firebase/firestore";
+
+export default function IncomeSurvey(){
     const { register,handleSubmit, formState: { errors } } = useForm();
+     // BACKEND
+     const eIngresoColRef = collection(db, "encuestasIngreso");
+
+    const initialStateValues = {
+        res1:'',
+        res2:'',
+        res3:'',
+        res4:[]
+    };
+    const [encuesta, setEncuesta] = useState(initialStateValues);
+
+    const handleInputChange = e => {
+        console.log(e.target);
+        const { name, value } = e.target;
+        setEncuesta({...encuesta, [name]: value});
+    }
+
+    const createEncuesta = () => {
+        //e.preventDefault();
+        for (let index = 0; index < document.getElementsByName('res4[]').length; index++) {
+            encuesta.res4[index]=document.getElementsByName('res4[]')[index].checked;
+        };
+        console.log(encuesta);
+        addEncuesta(encuesta);
+        //alert(newEIngresoR1,newEIngresoR2,newEIngresoR3,newEIngresoR4);
+        //await addDoc(eIngresoColRef, {res1: newEIngresoR1, res2: newEIngresoR2, res3: newEIngresoR3, res4: newEIngresoR4});
+      };
+
+    const addEncuesta = async (encuestaObject) =>{
+        await addDoc(eIngresoColRef, {res1: encuestaObject.res1, res2: encuestaObject.res2, res3: encuestaObject.res3, res4: encuestaObject.res4});
+    }
+
+    // FRONTEND
+
     const router = useRouter();
-    let forms = data;
+    //let forms = data;
 
     const alertActivated = () => {
       Swal.fire({
@@ -23,8 +61,9 @@ export default function IncomeSurvey({data}){
       }, 1600);
     };
 
-    const onSubmit = data => {
-        console.log(data);
+    const onSubmit = () => {
+        console.log();
+        createEncuesta();
         alertActivated();
     }
 
@@ -32,11 +71,14 @@ export default function IncomeSurvey({data}){
       <>
         <Layout>
           <div className="title-main-quizz blockzz">
-            <p>
-              {" "}
+            <p className="title is-2">
+              Encuesta de ingreso al programa de estudios de ingeniería en software
+            {/*
+             {" "}
               {forms.map((data) => {
                 return <p className="title is-2">{data.titulo}</p>;
               })}{" "}
+            */}
             </p>
           </div>
 
@@ -45,8 +87,6 @@ export default function IncomeSurvey({data}){
           {/* Módulo de encuesta*/}
           <form
             className="quizz-main m-auto"
-            action="/save"
-            method="POST"
             onSubmit={handleSubmit(onSubmit)}
           >
             <div className="field is-horizontal box">
@@ -60,21 +100,23 @@ export default function IncomeSurvey({data}){
                 <div className="field">
                   <p className="control">
                     <input
-                      {...register("answer", {
+                      {...register("res1", {
                         required: {
                           value: true,
                           message: "Campo obligatorio",
                         },
                       })}
-                      name="answer"
-                      value={forms.answer}
-                      /*onChange={handleInputChange}*/
+                      name="res1"
+                      /*value={forms.answer}*/
+                      onChange={handleInputChange}
                       className="input is-purple"
                       type="text"
                       placeholder="respuesta"
                     />
-                    {errors.answer && (
-                      <p className="error-message-field">¡{errors.answer.message}!</p>
+                    {errors.res1 && (
+                      <p className="error-message-field">
+                        ¡{errors.res1.message}!
+                      </p>
                     )}
                   </p>
                 </div>
@@ -89,21 +131,23 @@ export default function IncomeSurvey({data}){
                 <div className="field">
                   <p className="control">
                     <input
-                      {...register("answer_2", {
+                      {...register("res2", {
                         required: {
                           value: true,
                           message: "Campo obligatorio",
                         },
                       })}
-                      name="answer_2"
-                      value={forms.answer}
-                      /*onChange={handleInputChange}*/
+                      name="res2"
+                      onChange={handleInputChange}
+                      /*value={forms.answer}*/
                       className="input is-purple"
                       type="text"
                       placeholder="respuesta"
                     />
-                    {errors.answer_2 && (
-                      <p className="error-message-field">¡{errors.answer_2.message}!</p>
+                    {errors.res2 && (
+                      <p className="error-message-field">
+                        ¡{errors.res2.message}!
+                      </p>
                     )}
                   </p>
                 </div>
@@ -117,10 +161,12 @@ export default function IncomeSurvey({data}){
                   <div className="control">
                     <label className="radio">
                       <input
-                        name="answer"
-                        value={forms.answer}
-                        /*onChange={handleChange}*/ type="radio"
+                        {...register("radio", { required: true })}
+                        type="radio"
+                        name="res3"
+                        className="m-rght"
                         value="paginas"
+                        onChange={handleInputChange}
                       />
                       Páginas Web
                     </label>
@@ -128,9 +174,12 @@ export default function IncomeSurvey({data}){
                   <div className="control">
                     <label className="radio">
                       <input
-                        name="answer"
-                        value={forms.answer}
-                        /*onChange={handleChange}*/ type="radio"
+                        {...register("radio", { required: true })}
+                        type="radio"
+                        name="res3"
+                        className="m-rght"
+                        value="redes"
+                        onChange={handleInputChange}
                       />
                       Redes Sociales
                     </label>
@@ -138,9 +187,12 @@ export default function IncomeSurvey({data}){
                   <div className="control">
                     <label className="radio">
                       <input
-                        name="answer"
-                        value={forms.answer}
-                        /*onChange={handleChange}*/ type="radio"
+                        {...register("radio", { required: true })}
+                        type="radio"
+                        name="res3"
+                        className="m-rght"
+                        value="medios"
+                        onChange={handleInputChange}
                       />
                       Medios de comunicación (televisión, radio, periódico,
                       otro)
@@ -149,9 +201,12 @@ export default function IncomeSurvey({data}){
                   <div className="control">
                     <label className="radio">
                       <input
-                        name="answer"
-                        value={forms.answer}
-                        /*onChange={handleChange}*/ type="radio"
+                        {...register("radio", { required: true })}
+                        type="radio"
+                        name="res3"
+                        className="m-rght"
+                        value="vista"
+                        onChange={handleInputChange}
                       />
                       Visita guiada programada por mi bachillerato
                     </label>
@@ -159,9 +214,12 @@ export default function IncomeSurvey({data}){
                   <div className="control">
                     <label className="radio">
                       <input
-                        name="answer"
-                        value={forms.answer}
-                        /*onChange={handleChange}*/ type="radio"
+                        {...register("radio", { required: true })}
+                        type="radio"
+                        name="res3"
+                        className="m-rght"
+                        value="pendones"
+                        onChange={handleInputChange}
                       />
                       Pendones
                     </label>
@@ -169,14 +227,22 @@ export default function IncomeSurvey({data}){
                   <div className="control">
                     <label className="radio">
                       <input
-                        name="answer"
-                        value={forms.answer}
-                        /*onChange={handleChange}*/ type="radio"
+                        {...register("radio", { required: true })}
+                        type="radio"
+                        name="res3"
+                        className="m-rght"
+                        value="recomendación "
+                        onChange={handleInputChange}
                       />
                       Recomendación de alguien más
                     </label>
                   </div>
                 </div>
+                {errors.radio && (
+                  <p className="error-message-field">
+                    ¡Campo obligatorio!
+                  </p>
+                )}
                 <div className="control ">
                   <div className="field-is is-normal">
                     <label className="label">Otro:</label>
@@ -185,9 +251,10 @@ export default function IncomeSurvey({data}){
                     <div className="field">
                       <p className="control">
                         <input
+                          onChange={handleInputChange}
                           name="answer"
-                          value={forms.answer}
-                          /*onChange={handleChange}*/ className="input is-purple"
+                          /*value={forms.answer}*/
+                          className="input is-purple"
                           type="text"
                           placeholder="respuesta"
                         />
@@ -203,42 +270,48 @@ export default function IncomeSurvey({data}){
                 </label>
                 <div className="section-check">
                   <label className="checkbox">
-                    <input name="answer_c" type="checkbox" />
+                    <input
+                      onChange={handleInputChange} name="res4[]" type="checkbox" className="m-rght" />
                     Diseñar y desarrollar software a la medida y/o genérico de
                     calidad.
                   </label>
                 </div>
                 <div className="section-check">
                   <label className="checkbox">
-                    <input name="answer_c" type="checkbox" />
+                    <input
+                      onChange={handleInputChange} name="res4[]" type="checkbox" className="m-rght" />
                     Diseñar y crear bases de datos y aplicaciones para su
                     manipulación.
                   </label>
                 </div>
                 <div className="section-check">
                   <label className="checkbox">
-                    <input name="answer_c" type="checkbox" />
+                    <input
+                      onChange={handleInputChange} name="res4[]" type="checkbox" className="m-rght" />
                     Gestionar, administrar e implementar proyectos de innovación
                     en el área de software.
                   </label>
                 </div>
                 <div className="section-check">
                   <label className="checkbox">
-                    <input name="answer_c" type="checkbox" />
+                    <input
+                      onChange={handleInputChange} name="res4[]" type="checkbox" className="m-rght" />
                     Proporcionar soporte técnico y estratégico a la
                     infraestructura de tecnologías de información.
                   </label>
                 </div>
                 <div className="section-check">
                   <label className="checkbox">
-                    <input name="answer_c" type="checkbox" />
+                    <input
+                      onChange={handleInputChange} name="res4[]" type="checkbox" className="m-rght" />
                     Integrar nuevas soluciones de software a servicios modernos
                     como el comercio electrónico.
                   </label>
                 </div>
                 <div className="section-check">
                   <label className="checkbox">
-                    <input name="answer_c" type="checkbox" />
+                    <input
+                      onChange={handleInputChange} name="res4[]" type="checkbox" className="m-rght" />
                     Desarrollar investigación en el campo del desarrollo y
                     reingeniería de las tecnologías de la información.
                   </label>
@@ -253,9 +326,10 @@ export default function IncomeSurvey({data}){
                     <div className="field">
                       <p className="control">
                         <input
-                          name="answer"
-                          value={forms.answer}
-                          /*onChange={handleChange}*/ className="input is-purple"
+                          onChange={handleInputChange}
+                          name="res4[]"
+                          /*value={forms.answer}*/
+                          className="input is-purple"
                           type="text"
                           placeholder="respuesta"
                         />
@@ -274,7 +348,7 @@ export default function IncomeSurvey({data}){
     );
 }
 
-export async function getStaticProps() {
+/*export async function getStaticProps() {
     try {
       const res = await fetch('http://localhost:3200/preguntas')
       const data = await res.json()
@@ -287,3 +361,4 @@ export async function getStaticProps() {
       console.log(error)
     }
   }
+*/
