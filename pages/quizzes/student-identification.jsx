@@ -1,9 +1,125 @@
+import React, { useState, useEffect } from 'react';
+
 import Layout from '../../components/Layout';
 import Nabvar from '../../components/navbar';
 import ButtonSave from '../../components/buttonSave';
 import MessageInfo from '../../components/messageInfo';
+import { db } from '../../firebase';
+import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
 
 export default function StudentIdentification(){
+    
+    const eIngresoColRef = collection(db, "identificacionEstudiante");
+
+    const initialStateValues = {
+        res1:'',
+        res2:'',
+        res3:'',
+        res4:'',
+        res5:'',
+        res6:'',
+        res7:'',
+        res8:'',
+        res9:'',
+        res10:'',
+        res11:'',
+        res12:'',
+        res13:'',
+        res14:'',
+        res15:'',
+        res16:'',
+        res17:'',
+        res18:'',
+        res19:'',
+        res20:'',
+        res21:'',
+        res22:'',
+        res23:'',
+        res24:'',
+        res25:'',
+        res26:'',
+        res27:'',
+        res28:'',
+        res29:'',
+        res30:'',
+        res31:'',
+        res32:'',
+        res33:'',
+        res34:'',
+        res35:'',
+        res36:'',
+        res37:'',
+        res38:'',
+        res39:'',
+        res40:'',
+        res41:'',
+        res42:'',
+        res43:''
+    };
+    const [encuesta, setEncuesta] = useState(initialStateValues);
+    
+    const handleInputChange = e => {
+        const { name, value } = e.target;
+        setEncuesta({...encuesta, [name]: value});
+    }
+
+    const createEncuesta = e => {
+        e.preventDefault();
+        console.log(encuesta);
+        addEncuesta(encuesta);
+        //alert(newEIngresoR1,newEIngresoR2,newEIngresoR3,newEIngresoR4);
+        //await addDoc(eIngresoColRef, {res1: newEIngresoR1, res2: newEIngresoR2, res3: newEIngresoR3, res4: newEIngresoR4});
+      };
+    
+    const addEncuesta = async (encuestaObject) =>{
+        await addDoc(
+            eIngresoColRef, 
+            {
+                res1: encuestaObject.res1,
+                res2: encuestaObject.res2,
+                res3: encuestaObject.res3,
+                res4: encuestaObject.res4,
+                res5: encuestaObject.res5,
+                res6: encuestaObject.res6,
+                res7: encuestaObject.res7,
+                res8: encuestaObject.res8,
+                res9: encuestaObject.res9,
+                res10: encuestaObject.res10,
+                res11: encuestaObject.res11,
+                res12: encuestaObject.res12,
+                res13: encuestaObject.res13,
+                res14: encuestaObject.res14,
+                res15: encuestaObject.res15,
+                res16: encuestaObject.res16,
+                res17: encuestaObject.res17,
+                res18: encuestaObject.res18,
+                res19: encuestaObject.res19,
+                res20: encuestaObject.res20,
+                res21: encuestaObject.res21,
+                res22: encuestaObject.res22,
+                res23: encuestaObject.res23,
+                res24: encuestaObject.res24,
+                res25: encuestaObject.res25,
+                res26: encuestaObject.res26,
+                res27: encuestaObject.res27,
+                res28: encuestaObject.res28,
+                res29: encuestaObject.res29,
+                res30: encuestaObject.res30,
+                res31: encuestaObject.res31,
+                res32: encuestaObject.res32,
+                res33: encuestaObject.res33,
+                res34: encuestaObject.res34,
+                res35: encuestaObject.res35,
+                res36: encuestaObject.res36,
+                res37: encuestaObject.res37,
+                res38: encuestaObject.res38,
+                res39: encuestaObject.res39,
+                res40: encuestaObject.res40,
+                res41: encuestaObject.res41,
+                res42: encuestaObject.res42,
+                res43: encuestaObject.res43
+            });
+    }
     return(
         <Layout>
             <Nabvar />
@@ -14,7 +130,7 @@ export default function StudentIdentification(){
 
             <MessageInfo />
 
-            <div className="quizz-main m-auto">
+            <form className="quizz-main m-auto" onSubmit={createEncuesta}>
                 {/* Módulo periodo de egreso y año de egreso*/}
                 <div className="field is-horizontal box">
                     <div className="tags">
@@ -24,19 +140,19 @@ export default function StudentIdentification(){
                     <div className="section-check block">
                         <div className="control">
                             <label className="radio">
-                                <input type="radio" className="m-rght" name="answer" />
+                                <input onChange={handleInputChange} type="radio" className="m-rght" name="res1" />
                                 Enero - Abril
                             </label>
                         </div>
                         <div className="control">
                             <label className="radio">
-                                <input type="radio" className="m-rght" name="answer" />
+                                <input onChange={handleInputChange} type="radio" className="m-rght" name="res" />
                                 Mayo - Agosto
                             </label>
                         </div>
                         <div className="control">
                             <label className="radio">
-                                <input type="radio" className="m-rght" name="answer" />
+                                <input onChange={handleInputChange} type="radio" className="m-rght" name="res" />
                                 Septiembre - Diciembre
                             </label>
                         </div>
@@ -44,23 +160,23 @@ export default function StudentIdentification(){
                     <label className="label">Año de egreso:</label>
                     <div className="select">
                         <select>
-                            <option>2021</option>
-                            <option>2020</option>
-                            <option>2019</option>
-                            <option>2018</option>
-                            <option>2017</option>
-                            <option>2016</option>
-                            <option>2015</option>
-                            <option>2014</option>
-                            <option>2013</option>
-                            <option>2012</option>
-                            <option>2011</option>
-                            <option>2010</option>
-                            <option>2009</option>
-                            <option>2008</option>
-                            <option>2007</option>
-                            <option>2006</option>
-                            <option>2005</option>
+                        <option name="res2" value="2021"  onChange={handleInputChange}>2021</option>
+                            <option name="res2" value="2020"  onChange={handleInputChange}>2020</option>
+                            <option name="res2" value="2019"  onChange={handleInputChange}>2019</option>
+                            <option name="res2" value="2018"  onChange={handleInputChange}>2018</option>
+                            <option name="res2" value="2017"  onChange={handleInputChange}>2017</option>
+                            <option name="res2" value="2016"  onChange={handleInputChange}>2016</option>
+                            <option name="res2" value="2015"  onChange={handleInputChange}>2015</option>
+                            <option name="res2" value="2014"  onChange={handleInputChange}>2014</option>
+                            <option name="res2" value="2013"  onChange={handleInputChange}>2013</option>
+                            <option name="res2" value="2012"  onChange={handleInputChange}>2012</option>
+                            <option name="res2" value="2011"  onChange={handleInputChange}>2011</option>
+                            <option name="res2" value="2010"  onChange={handleInputChange}>2010</option>
+                            <option name="res2" value="2009"  onChange={handleInputChange}>2009</option>
+                            <option name="res2" value="2008"  onChange={handleInputChange}>2008</option>
+                            <option name="res2" value="2007"  onChange={handleInputChange}>2007</option>
+                            <option name="res2" value="2006"  onChange={handleInputChange}>2006</option>
+                            <option name="res2" value="2005"  onChange={handleInputChange}>2005</option>
                         </select>
                     </div>
                 </div>
@@ -78,7 +194,7 @@ export default function StudentIdentification(){
                             <div className="field-body block">
                                 <div className="field">
                                     <p className="control">
-                                        <input className="input is-purple" type="text" placeholder="respuesta" />
+                                        <input onChange={handleInputChange} name="res3" className="input is-purple" type="text" placeholder="respuesta" />
                                     </p>
                                 </div>
                             </div>
@@ -87,7 +203,7 @@ export default function StudentIdentification(){
                     <div className="block">
                         <label className="label">Fecha de nacimiento: <span className="span-req">*</span></label>
                         <form>
-                            <input className="input is-purple" type="date" name="day" />
+                            <input onChange={handleInputChange} name="res4" className="input is-purple" type="date" name="day" />
                         </form>
                     </div>
                     {/* Género*/}
@@ -96,19 +212,19 @@ export default function StudentIdentification(){
                         <div className="section-check">
                             <div className="control">
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" name="answer" name="res5" value="Femenino"/>
                                     Femenino
                                 </label>
                             </div>
                             <div className="control">
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" name="answer" name="res5" value="Masculino"/>
                                     Masculino
                                 </label>
                             </div>
                             <div className="control">
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" name="answer" name="res5"  value="Otro"/>
                                     otro
                                 </label>
                             </div>
@@ -123,7 +239,7 @@ export default function StudentIdentification(){
                             <div className="field-body block">
                                 <div className="field">
                                     <p className="control">
-                                        <input className="input is-purple" type="text" placeholder="respuesta" />
+                                        <input onChange={handleInputChange} name="res6" className="input is-purple" type="text" placeholder="respuesta" />
                                     </p>
                                 </div>
                             </div>
@@ -138,7 +254,7 @@ export default function StudentIdentification(){
                             <div className="field-body block">
                                 <div className="field">
                                     <p className="control">
-                                        <input className="input is-purple" type="text" placeholder="respuesta" />
+                                        <input onChange={handleInputChange} name="res7" className="input is-purple" type="text" placeholder="respuesta" />
                                     </p>
                                 </div>
                             </div>
@@ -148,12 +264,12 @@ export default function StudentIdentification(){
                     <div className="block">
                         <div className="field is-horizontal">
                             <div className="field-is is-normal" id="field-quizz">
-                                <label className="label">Teléfono de contacto: <span className="span-req">*</span></label>
+                                <label name="res8" className="label">Teléfono de contacto: <span className="span-req">*</span></label>
                             </div>
                             <div className="field-body block ">
                                 <div className="field">
                                     <p className="control input-width-small">
-                                        <input className="input is-purple" type="number" placeholder="respuesta" />
+                                        <input onChange={handleInputChange} name="res8" className="input is-purple" type="number" placeholder="respuesta" />
                                     </p>
                                 </div>
                             </div>
@@ -171,7 +287,7 @@ export default function StudentIdentification(){
                             <div className="field-body block block">
                                 <div className="field">
                                     <p className="control">
-                                        <input className="input is-purple" type="text" placeholder="respuesta" />
+                                        <input onChange={handleInputChange} name="res9" className="input is-purple" type="text" placeholder="respuesta" />
                                     </p>
                                 </div>
                             </div>
@@ -182,7 +298,7 @@ export default function StudentIdentification(){
                             <div className="field-body block">
                                 <div className="field">
                                     <p className="control">
-                                        <input className="input is-purple" type="text" placeholder="respuesta" />
+                                        <input onChange={handleInputChange} name="res10" className="input is-purple" type="text" placeholder="respuesta" />
                                     </p>
                                 </div>
                             </div>
@@ -192,7 +308,7 @@ export default function StudentIdentification(){
                             <div className="field-body block">
                                 <div className="field">
                                     <p className="control">
-                                        <input className="input is-purple" type="text" placeholder="respuesta" />
+                                        <input onChange={handleInputChange} name="res11" className="input is-purple" type="text" placeholder="respuesta" />
                                     </p>
                                 </div>
                             </div>
@@ -202,7 +318,7 @@ export default function StudentIdentification(){
                             <div className="field-body block">
                                 <div className="field">
                                     <p className="control">
-                                        <input className="input is-purple" type="text" placeholder="respuesta" />
+                                        <input onChange={handleInputChange} name="res12" className="input is-purple" type="text" placeholder="respuesta" />
                                     </p>
                                 </div>
                             </div>
@@ -213,7 +329,7 @@ export default function StudentIdentification(){
                             <div className="field-body block">
                                 <div className="field">
                                     <p className="control">
-                                        <input className="input is-purple" type="text" placeholder="respuesta" />
+                                        <input onChange={handleInputChange} name="res13" className="input is-purple" type="text" placeholder="respuesta" />
                                     </p>
                                 </div>
                             </div>
@@ -224,7 +340,7 @@ export default function StudentIdentification(){
                             <div className="field-body block">
                                 <div className="field">
                                     <p className="control">
-                                        <input className="input is-purple" type="text" placeholder="respuesta" />
+                                        <input onChange={handleInputChange} name="res14" className="input is-purple" type="text" placeholder="respuesta" />
                                     </p>
                                 </div>
                             </div>
@@ -235,7 +351,7 @@ export default function StudentIdentification(){
                             <div className="field-body block">
                                 <div className="field">
                                     <p className="control">
-                                        <input className="input is-purple" type="text" placeholder="respuesta" />
+                                        <input onChange={handleInputChange} name="res15" className="input is-purple" type="text" placeholder="respuesta" />
                                     </p>
                                 </div>
                             </div>
@@ -256,7 +372,7 @@ export default function StudentIdentification(){
                         <div className="field-body block">
                             <div className="field">
                                 <p className="control">
-                                    <input className="input is-purple" type="text" placeholder="respuesta" />
+                                    <input onChange={handleInputChange} name="res16" className="input is-purple" type="text" placeholder="respuesta" />
                                 </p>
                             </div>
                         </div>
@@ -265,16 +381,18 @@ export default function StudentIdentification(){
                     <div className="block">
                         <label className="label">En caso de padecer alguna enfermedad ¿recibes tratamiento?: </label>
                         <div className="section-check">
-                            <label className="checkbox">
-                                <input type="checkbox" className="m-rght" />
-                                Si
-                            </label>
-                        </div>
-                        <div className="section-check">
-                            <label className="checkbox">
-                                <input type="checkbox" className="m-rght" />
-                                No
-                            </label>
+                            <div className="control">
+                                <label className="radio">
+                                    <input onChange={handleInputChange} name="res17" type="radio" value="Si"/>
+                                    Si
+                                </label>
+                            </div>
+                            <div className="control">
+                                <label className="radio">
+                                    <input onChange={handleInputChange} name="res17" type="radio" value="No"/>
+                                    No
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -297,7 +415,7 @@ export default function StudentIdentification(){
                         <div className="field-body block block">
                             <div className="field">
                                 <p className="control">
-                                    <input className="input is-purple" type="text" placeholder="respuesta" />
+                                    <input onChange={handleInputChange} name="res18" className="input is-purple" type="text" placeholder="respuesta" />
                                 </p>
                             </div>
                         </div>
@@ -308,7 +426,7 @@ export default function StudentIdentification(){
                         <div className="field-body block">
                             <div className="field">
                                 <p className="control">
-                                    <input className="input is-purple" type="text" placeholder="respuesta" />
+                                    <input onChange={handleInputChange} name="res19" className="input is-purple" type="text" placeholder="respuesta" />
                                 </p>
                             </div>
                         </div>
@@ -319,7 +437,7 @@ export default function StudentIdentification(){
                         <div className="field-body block">
                             <div className="field">
                                 <p className="control">
-                                    <input className="input is-purple" type="text" placeholder="respuesta" />
+                                    <input onChange={handleInputChange} name="res20" className="input is-purple" type="text" placeholder="respuesta" />
                                 </p>
                             </div>
                         </div>
@@ -330,7 +448,7 @@ export default function StudentIdentification(){
                         <div className="field-body block">
                             <div className="field">
                                 <p className="control">
-                                    <input className="input is-purple" type="text" placeholder="respuesta" />
+                                    <input onChange={handleInputChange} name="res21" className="input is-purple" type="text" placeholder="respuesta" />
                                 </p>
                             </div>
                         </div>
@@ -341,7 +459,7 @@ export default function StudentIdentification(){
                         <div className="field-body block ">
                             <div className="field">
                                 <p className="control input-width-small">
-                                    <input className="input is-purple" type="number" placeholder="respuesta" />
+                                    <input onChange={handleInputChange} name="res22" className="input is-purple" type="number" placeholder="respuesta" />
                                 </p>
                             </div>
                         </div>
@@ -351,7 +469,7 @@ export default function StudentIdentification(){
                         </div>
                         <div className="section-check field">
                             <label className="checkbox">
-                                <input type="checkbox" className="m-rght" />
+                                <input onChange={handleInputChange} name="res23" type="checkbox" />
                                 Mismo domicilio que el mio
                             </label>
                         </div>
@@ -361,7 +479,7 @@ export default function StudentIdentification(){
                         <div className="field-body block block">
                             <div className="field">
                                 <p className="control">
-                                    <input className="input is-purple" type="text" placeholder="respuesta" />
+                                    <input onChange={handleInputChange} name="res24" className="input is-purple" type="text" placeholder="respuesta" />
                                 </p>
                             </div>
                         </div>
@@ -370,7 +488,7 @@ export default function StudentIdentification(){
                         </div>
                         <div className="field">
                             <p className="control">
-                                <input className="input is-purple" type="text" placeholder="respuesta" />
+                                <input onChange={handleInputChange} name="res25" className="input is-purple" type="text" placeholder="respuesta" />
                             </p>
                         </div>
                         <div className="field-is is-normal" id="field-quizz">
@@ -379,7 +497,7 @@ export default function StudentIdentification(){
                         <div className="field-body block">
                             <div className="field">
                                 <p className="control">
-                                    <input className="input is-purple" type="text" placeholder="respuesta" />
+                                    <input onChange={handleInputChange} name="res26" className="input is-purple" type="text" placeholder="respuesta" />
                                 </p>
                             </div>
                         </div>
@@ -390,7 +508,7 @@ export default function StudentIdentification(){
                         <div className="field-body block">
                             <div className="field">
                                 <p className="control">
-                                    <input className="input is-purple" type="text" placeholder="respuesta" />
+                                    <input onChange={handleInputChange} name="res27" className="input is-purple" type="text" placeholder="respuesta" />
                                 </p>
                             </div>
                         </div>
@@ -400,7 +518,7 @@ export default function StudentIdentification(){
                         <div className="field-body block">
                             <div className="field">
                                 <p className="control">
-                                    <input className="input is-purple" type="text" placeholder="respuesta" />
+                                    <input onChange={handleInputChange} name="res28" className="input is-purple" type="text" placeholder="respuesta" />
                                 </p>
                             </div>
                         </div>
@@ -410,7 +528,7 @@ export default function StudentIdentification(){
                         <div className="field-body block">
                             <div className="field">
                                 <p className="control">
-                                    <input className="input is-purple" type="text" placeholder="respuesta" />
+                                    <input onChange={handleInputChange} name="res29" className="input is-purple" type="text" placeholder="respuesta" />
                                 </p>
                             </div>
                         </div>
@@ -420,7 +538,7 @@ export default function StudentIdentification(){
                         <div className="field-body block">
                             <div className="field">
                                 <p className="control">
-                                    <input className="input is-purple" type="text" placeholder="respuesta" />
+                                    <input onChange={handleInputChange} name="res30" className="input is-purple" type="text" placeholder="respuesta" />
                                 </p>
                             </div>
                         </div>
@@ -438,7 +556,7 @@ export default function StudentIdentification(){
                         <div className="field-body block block">
                             <div className="field">
                                 <p className="control">
-                                    <input className="input is-purple" type="text" placeholder="respuesta" />
+                                    <input onChange={handleInputChange} name="res31" className="input is-purple" type="text" placeholder="respuesta" />
                                 </p>
                             </div>
                         </div>
@@ -449,7 +567,7 @@ export default function StudentIdentification(){
                         <div className="field-body block">
                             <div className="field">
                                 <p className="control">
-                                    <input className="input is-purple" type="text" placeholder="respuesta" />
+                                    <input onChange={handleInputChange} name="res32" className="input is-purple" type="text" placeholder="respuesta" />
                                 </p>
                             </div>
                         </div>
@@ -460,7 +578,7 @@ export default function StudentIdentification(){
                         <div className="field-body block">
                             <div className="field">
                                 <p className="control">
-                                    <input className="input is-purple" type="text" placeholder="respuesta" />
+                                    <input onChange={handleInputChange} name="res33" className="input is-purple" type="text" placeholder="respuesta" />
                                 </p>
                             </div>
                         </div>
@@ -471,7 +589,7 @@ export default function StudentIdentification(){
                         <div className="field-body block">
                             <div className="field">
                                 <p className="control">
-                                    <input className="input is-purple" type="text" placeholder="respuesta" />
+                                    <input onChange={handleInputChange} name="res34" className="input is-purple" type="text" placeholder="respuesta" />
                                 </p>
                             </div>
                         </div>
@@ -482,7 +600,7 @@ export default function StudentIdentification(){
                         <div className="field-body block ">
                             <div className="field">
                                 <p className="control input-width-small">
-                                    <input className="input is-purple" type="number" placeholder="respuesta" />
+                                    <input onChange={handleInputChange} name="res35" className="input is-purple" type="number" placeholder="respuesta" />
                                 </p>
                             </div>
                         </div>
@@ -492,7 +610,7 @@ export default function StudentIdentification(){
                         </div>
                         <div className="section-check field">
                             <label className="checkbox">
-                                <input type="checkbox" className="m-rght" />
+                                <input onChange={handleInputChange} name="res36" type="checkbox" />
                                 Mismo domicilio que el mio
                             </label>
                         </div>
@@ -502,7 +620,7 @@ export default function StudentIdentification(){
                         <div className="field-body block block">
                             <div className="field">
                                 <p className="control">
-                                    <input className="input is-purple" type="text" placeholder="respuesta" />
+                                    <input onChange={handleInputChange} name="res37" className="input is-purple" type="text" placeholder="respuesta" />
                                 </p>
                             </div>
                         </div>
@@ -511,7 +629,7 @@ export default function StudentIdentification(){
                         </div>
                         <div className="field">
                             <p className="control">
-                                <input className="input is-purple" type="text" placeholder="respuesta" />
+                                <input onChange={handleInputChange} name="res38" className="input is-purple" type="text" placeholder="respuesta" />
                             </p>
                         </div>
                         <div className="field-is is-normal" id="field-quizz">
@@ -520,7 +638,7 @@ export default function StudentIdentification(){
                         <div className="field-body block">
                             <div className="field">
                                 <p className="control">
-                                    <input className="input is-purple" type="text" placeholder="respuesta" />
+                                    <input onChange={handleInputChange} name="res39" className="input is-purple" type="text" placeholder="respuesta" />
                                 </p>
                             </div>
                         </div>
@@ -531,7 +649,7 @@ export default function StudentIdentification(){
                         <div className="field-body block">
                             <div className="field">
                                 <p className="control">
-                                    <input className="input is-purple" type="text" placeholder="respuesta" />
+                                    <input onChange={handleInputChange} name="res40" className="input is-purple" type="text" placeholder="respuesta" />
                                 </p>
                             </div>
                         </div>
@@ -541,7 +659,7 @@ export default function StudentIdentification(){
                         <div className="field-body block">
                             <div className="field">
                                 <p className="control">
-                                    <input className="input is-purple" type="text" placeholder="respuesta" />
+                                    <input onChange={handleInputChange} name="res41" className="input is-purple" type="text" placeholder="respuesta" />
                                 </p>
                             </div>
                         </div>
@@ -551,7 +669,7 @@ export default function StudentIdentification(){
                         <div className="field-body block">
                             <div className="field">
                                 <p className="control">
-                                    <input className="input is-purple" type="text" placeholder="respuesta" />
+                                    <input onChange={handleInputChange} name="res42" className="input is-purple" type="text" placeholder="respuesta" />
                                 </p>
                             </div>
                         </div>
@@ -561,15 +679,23 @@ export default function StudentIdentification(){
                         <div className="field-body block">
                             <div className="field">
                                 <p className="control">
-                                    <input className="input is-purple" type="text" placeholder="respuesta" />
+                                    <input onChange={handleInputChange} name="res43" className="input is-purple" type="text" placeholder="respuesta" />
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
                 {/* Botón de guardar encuesta*/}
-                <ButtonSave />
-            </div>
+                <div class="btn-section block">
+                    <label class="label">
+                        <p class="control">
+                            <button class="button is-purple-quizz-save" onClick={createEncuesta}>
+                                Guardar
+                            </button>
+                        </p>
+                    </label>
+                </div>
+            </form>
         </Layout>
     );
 }
