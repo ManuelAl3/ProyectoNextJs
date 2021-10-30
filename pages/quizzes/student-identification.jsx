@@ -71,8 +71,6 @@ export default function StudentIdentification(){
         e.preventDefault();
         console.log(encuesta);
         addEncuesta(encuesta);
-        //alert(newEIngresoR1,newEIngresoR2,newEIngresoR3,newEIngresoR4);
-        //await addDoc(eIngresoColRef, {res1: newEIngresoR1, res2: newEIngresoR2, res3: newEIngresoR3, res4: newEIngresoR4});
       };
 
     const addEncuesta = async (encuestaObject) =>{
@@ -140,7 +138,6 @@ export default function StudentIdentification(){
     };
 
     const onSubmit = () => {
-        console.log();
         createEncuesta();
         alertActivated();
     }
@@ -153,7 +150,7 @@ export default function StudentIdentification(){
 
           <MessageInfo />
 
-          <form className="quizz-main m-auto" onSubmit={createEncuesta}>
+          <form className="quizz-main m-auto" onSubmit={handleSubmit(onSubmit)}>
             {/* Módulo periodo de egreso y año de egreso*/}
             <div className="field is-horizontal box">
               <div className="tags">

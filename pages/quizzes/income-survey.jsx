@@ -62,7 +62,6 @@ export default function IncomeSurvey(){
     };
 
     const onSubmit = () => {
-        console.log();
         createEncuesta();
         alertActivated();
     }

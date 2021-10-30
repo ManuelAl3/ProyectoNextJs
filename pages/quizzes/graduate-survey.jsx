@@ -90,7 +90,6 @@ export default function GraduateSurvey() {
     };
 
     const onSubmit = () => {
-        console.log();
         createEncuesta();
         alertActivated();
     }
