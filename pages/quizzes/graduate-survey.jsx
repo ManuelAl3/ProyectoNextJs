@@ -2,6 +2,10 @@ import Layout from '../../components/Layout';
 import Nabvar from '../../components/navbar';
 import ButtonSave from '../../components/buttonSave';
 import MessageInfo from '../../components/messageInfo';
+import { useState } from 'react';
+
+import { db } from '../../firebase';
+import { collection, addDoc } from "firebase/firestore";
 
 export default function GraduateSurvey() {
     
