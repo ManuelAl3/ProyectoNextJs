@@ -74,10 +74,9 @@ export default function IncomeSurvey(){
             <p className="title is-2">
               Encuesta de ingreso al programa de estudios de ingeniería en software
             {/*
-             {" "}
               {forms.map((data) => {
                 return <p className="title is-2">{data.titulo}</p>;
-              })}{" "}
+              })}
             */}
             </p>
           </div>
@@ -92,7 +91,6 @@ export default function IncomeSurvey(){
             <div className="field is-horizontal box">
               <div className="field-is is-normal">
                 <label name="question_id" className="label">
-                  {" "}
                   Escuela de procedencia <span className="span-req">*</span>
                 </label>
               </div>
@@ -123,7 +121,7 @@ export default function IncomeSurvey(){
               </div>
               <div className="field-is is-normal">
                 <label name="question_id" className="label">
-                  Especialidad cursada en tu escuela de procedencia:{" "}
+                  Especialidad cursada en tu escuela de procedencia:
                   <span className="span-req">*</span>
                 </label>
               </div>
@@ -271,7 +269,7 @@ export default function IncomeSurvey(){
                 <div className="section-check">
                   <label className="checkbox">
                     <input
-                      onChange={handleInputChange} name="res4[]" type="checkbox" className="m-rght" />
+                      onChange={handleInputChange} name="res4[]" type="checkbox" className="m-rght" {...register("checkbox", { required: true })} />
                     Diseñar y desarrollar software a la medida y/o genérico de
                     calidad.
                   </label>
@@ -279,7 +277,7 @@ export default function IncomeSurvey(){
                 <div className="section-check">
                   <label className="checkbox">
                     <input
-                      onChange={handleInputChange} name="res4[]" type="checkbox" className="m-rght" />
+                      onChange={handleInputChange} name="res4[]" type="checkbox" className="m-rght" {...register("checkbox", { required: true })} />
                     Diseñar y crear bases de datos y aplicaciones para su
                     manipulación.
                   </label>
@@ -287,7 +285,7 @@ export default function IncomeSurvey(){
                 <div className="section-check">
                   <label className="checkbox">
                     <input
-                      onChange={handleInputChange} name="res4[]" type="checkbox" className="m-rght" />
+                      onChange={handleInputChange} name="res4[]" type="checkbox" className="m-rght" {...register("checkbox", { required: true })} />
                     Gestionar, administrar e implementar proyectos de innovación
                     en el área de software.
                   </label>
@@ -295,7 +293,7 @@ export default function IncomeSurvey(){
                 <div className="section-check">
                   <label className="checkbox">
                     <input
-                      onChange={handleInputChange} name="res4[]" type="checkbox" className="m-rght" />
+                      onChange={handleInputChange} name="res4[]" type="checkbox" className="m-rght" {...register("checkbox", { required: true })} />
                     Proporcionar soporte técnico y estratégico a la
                     infraestructura de tecnologías de información.
                   </label>
@@ -303,7 +301,7 @@ export default function IncomeSurvey(){
                 <div className="section-check">
                   <label className="checkbox">
                     <input
-                      onChange={handleInputChange} name="res4[]" type="checkbox" className="m-rght" />
+                      onChange={handleInputChange} name="res4[]" type="checkbox" className="m-rght" {...register("checkbox", { required: true })} />
                     Integrar nuevas soluciones de software a servicios modernos
                     como el comercio electrónico.
                   </label>
@@ -311,11 +309,16 @@ export default function IncomeSurvey(){
                 <div className="section-check">
                   <label className="checkbox">
                     <input
-                      onChange={handleInputChange} name="res4[]" type="checkbox" className="m-rght" />
+                      onChange={handleInputChange} name="res4[]" type="checkbox" className="m-rght" {...register("checkbox", { required: true })} />
                     Desarrollar investigación en el campo del desarrollo y
                     reingeniería de las tecnologías de la información.
                   </label>
                 </div>
+                {errors.checkbox && (
+                  <p className="error-message-field">
+                    ¡Campo obligatorio!
+                  </p>
+                )}
                 <div className="control ">
                   <div className="field-is is-normal">
                     <label name="question_id" className="label">

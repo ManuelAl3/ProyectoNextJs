@@ -35,7 +35,7 @@ export default function GraduateFollowUp(){
 
         <MessageInfo />
 
-        <div className="quizz-main m-auto">
+        <form className="quizz-main m-auto" onSubmit={handleSubmit(onSubmit)}>
           <div className="box">
             <div className="block">
               <label className="label">
@@ -43,46 +43,56 @@ export default function GraduateFollowUp(){
               </label>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" className="m-rght" {...register("radio", {required: true})} />
+                  <input {...register("checkbox", { required: true })} type="checkbox" className="m-rght" />
                   Ciudad de Durango
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" className="m-rght" />
+                  <input {...register("checkbox", { required: true })} type="checkbox" className="m-rght" />
                   En otro municipio de Durango
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" className="m-rght" />
+                  <input {...register("checkbox", { required: true })} type="checkbox" className="m-rght" />
                   En otro estado del país
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" className="m-rght" />
+                  <input {...register("checkbox", { required: true })} type="checkbox" className="m-rght" />
                   Fuera del país
                 </label>
               </div>
+              {errors.checkbox && (
+                <p className="error-message-field">
+                  ¡Campo obligatorio!
+                </p>
+              )}
             </div>
             <div className="block">
               <label className="label">
-                Donde vive, ¿es su lugar de origen?{" "}
+                Donde vive, ¿es su lugar de origen?
                 <span className="span-req">*</span>
               </label>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" className="m-rght" />
+                  <input {...register("checkbox", { required: true })} type="checkbox" className="m-rght" />
                   Si
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" className="m-rght" />
+                  <input {...register("checkbox", { required: true })} type="checkbox" className="m-rght" />
                   No
                 </label>
               </div>
+              {errors.checkbox && (
+                <p className="error-message-field">
+                  ¡Campo obligatorio!
+                </p>
+              )}
             </div>
             <div className="block">
               <label className="label">
@@ -90,16 +100,21 @@ export default function GraduateFollowUp(){
               </label>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" className="m-rght" />
+                  <input {...register("checkbox", { required: true })} type="checkbox" className="m-rght" />
                   Si
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" className="m-rght" />
+                  <input {...register("checkbox", { required: true })} type="checkbox" className="m-rght" />
                   No
                 </label>
               </div>
+              {errors.checkbox && (
+                <p className="error-message-field">
+                  ¡Campo obligatorio!
+                </p>
+              )}
             </div>
             <div className="block">
               <label className="label">Año en que tramitó su título: </label>
@@ -183,16 +198,21 @@ export default function GraduateFollowUp(){
               </label>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" className="m-rght" />
+                  <input {...register("checkbox", { required: true })} type="checkbox" className="m-rght" />
                   Si
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" className="m-rght" />
+                  <input {...register("checkbox", { required: true })} type="checkbox" className="m-rght" />
                   No
                 </label>
               </div>
+              {errors.checkbox && (
+                <p className="error-message-field">
+                  ¡Campo obligatorio!
+                </p>
+              )}
             </div>
             <div className="block">
               <label className="label">
@@ -201,16 +221,21 @@ export default function GraduateFollowUp(){
               </label>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" className="m-rght" />
+                  <input {...register("checkbox", { required: true })} type="checkbox" className="m-rght" />
                   En curso
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" className="m-rght" />
+                  <input {...register("checkbox", { required: true })} type="checkbox" className="m-rght" />
                   Concluido
                 </label>
               </div>
+              {errors.checkbox && (
+                <p className="error-message-field">
+                  ¡Campo obligatorio!
+                </p>
+              )}
             </div>
             <div className="block">
               <div className="field-is is-normal">
@@ -299,21 +324,26 @@ export default function GraduateFollowUp(){
             </div>
             <div className="block">
               <label className="label">
-                ¿Tenía usted empleo al concluir sus estudios de licenciatura?{" "}
+                ¿Tenía usted empleo al concluir sus estudios de licenciatura?
                 <span className="span-req">*</span>
               </label>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" className="m-rght" />
+                  <input {...register("checkbox", { required: true })} type="checkbox" className="m-rght" />
                   Si
                 </label>
               </div>
               <div className="section-check">
                 <label className="checkbox">
-                  <input type="checkbox" className="m-rght" />
+                  <input {...register("checkbox", { required: true })} type="checkbox" className="m-rght" />
                   No
                 </label>
               </div>
+              {errors.checkbox && (
+                <p className="error-message-field">
+                  ¡Campo obligatorio!
+                </p>
+              )}
             </div>
             <div className="block">
               <label className="label">
@@ -603,7 +633,7 @@ export default function GraduateFollowUp(){
 
           {/*Botón de guardar encuesta*/}
           <ButtonSave />
-        </div>
+        </form>
       </Layout>
     );
 }

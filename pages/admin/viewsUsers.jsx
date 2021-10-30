@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { db } from '../../firebase';
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
 
-import { Table } from 'reactstrap'
+import { Table } from 'reactstrap';
 export default function iewsUsers(){
 
     const [eIngreso, seteIngreso] = useState([]);

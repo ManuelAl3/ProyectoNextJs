@@ -1,20 +1,43 @@
 import Layout from '../../components/Layout';
-import Nabvar from '../../components/navbar';
 import ButtonSave from '../../components/buttonSave';
 import MessageInfo from '../../components/messageInfo';
+import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
+import { useRouter } from 'next/router';
 
 export default function GraduateSurvey() {
+    // FRONTEND
+    const { register,handleSubmit, formState: { errors } } = useForm();
+    const router = useRouter();
+    //let forms = data;
+
+    const alertActivated = () => {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Finalizado",
+        showConfirmButton: false,
+        timer: 1600,
+      });
+      setTimeout(() => {
+        router.replace("/polls");
+      }, 1600);
+    };
+
+    const onSubmit = () => {
+        console.log();
+        createEncuesta();
+        alertActivated();
+    }
     return(
         <Layout>
-            <Nabvar />
-
             <div className="title-main-quizz block">
                 <p className="title is-2">Encuesta de egresados</p>
             </div>
 
             <MessageInfo />
 
-            <div className="quizz-main m-auto">
+            <form className="quizz-main m-auto" onSubmit={handleSubmit(onSubmit)}>
                 {/* Módulo periodo de egreso y año de egreso*/}
                 <div className="box">
                     <div className="tags">
@@ -415,7 +438,7 @@ export default function GraduateSurvey() {
                 </div>
                 {/* Botón de guardar encuesta*/}
                 <ButtonSave />
-            </div>
+            </form>
         </Layout>
     );
 }
