@@ -13,7 +13,7 @@ export default function iewsUsers(){
           const data = await getDocs(eIngresoColRef);
           seteIngreso(data.docs.map((doc) => ({...doc.data(), id: doc.id })));
         }
-        geteIngreso()w
+        geteIngreso()
       }, [])
     return (
       <>
