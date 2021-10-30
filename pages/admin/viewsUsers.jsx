@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { db } from '../../firebase';
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
 
-import { Table } from 'reactstrap';
 export default function iewsUsers(){
 
     const [eIngreso, seteIngreso] = useState([]);
@@ -14,14 +13,30 @@ export default function iewsUsers(){
           const data = await getDocs(eIngresoColRef);
           seteIngreso(data.docs.map((doc) => ({...doc.data(), id: doc.id })));
         }
-        geteIngreso()
+        geteIngreso()w
       }, [])
     return (
       <>
         <div className="title-main-quizz block">
-          <p className="title is-2">Encuesta Ingreso</p>
+          <p className="title is-2">Encuestas</p>
         </div>
-
+        {/* */}
+        <div class="tabs is-centered">
+          <ul>
+            <li class="is-active">
+              <a>Encuesta1</a>
+            </li>
+            <li>
+              <a>Encuesta2</a>
+            </li>
+            <li>
+              <a>Encuesta3</a>
+            </li>
+            <li>
+              <a>Encuesta4</a>
+            </li>
+          </ul>
+        </div>
         {/* Módulo de encuesta*/}
         <div className="container is-align-content-center">
           <div className="field is-horizontal box">
@@ -62,36 +77,6 @@ export default function iewsUsers(){
             </div>
           </div>
         </div>
-        <Table borderless hover responsive size="">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Username</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
-          </tbody>
-        </Table>
       </>
     );
 }
