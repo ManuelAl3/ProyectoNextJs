@@ -4,6 +4,68 @@ import ButtonSave from '../../components/buttonSave';
 import MessageInfo from '../../components/messageInfo';
 
 export default function GraduateSurvey() {
+    
+    const eIngresoColRef = collection(db, "encuestaGraduacion");
+
+    const initialStateValues = {
+        res1:'',
+        res2:'',
+        res3:'',
+        res4:'',
+        res5:'',
+        res6:'',
+        res7:'',
+        res8:'',
+        res9:'',
+        res10:'',
+        res11:'',
+        res12:'',
+        res13:'',
+        res14:'',
+        res15:'',
+        res16:'',
+        res17:''
+    };
+    const [encuesta, setEncuesta] = useState(initialStateValues);
+    
+    const handleInputChange = e => {
+        const { name, value } = e.target;
+        setEncuesta({...encuesta, [name]: value});
+    }
+
+    const createEncuesta = e => {
+        e.preventDefault();
+        for (let index = 0; index < document.getElementsByName('res4[]').length; index++) {
+            encuesta.res4[index]=document.getElementsByName('res4[]')[index].checked;
+        };
+        console.log(encuesta);
+        addEncuesta(encuesta);
+        //alert(newEIngresoR1,newEIngresoR2,newEIngresoR3,newEIngresoR4);
+        //await addDoc(eIngresoColRef, {res1: newEIngresoR1, res2: newEIngresoR2, res3: newEIngresoR3, res4: newEIngresoR4});
+      };
+    
+    const addEncuesta = async (encuestaObject) =>{
+        await addDoc(eIngresoColRef,
+            {
+                res1: encuestaObject.res1,
+                res2: encuestaObject.res2,
+                res3: encuestaObject.res3,
+                res4: encuestaObject.res4,
+                res5: encuestaObject.res5,
+                res6: encuestaObject.res6,
+                res7: encuestaObject.res7,
+                res8: encuestaObject.res8,
+                res9: encuestaObject.res9,
+                res10: encuestaObject.res10,
+                res11: encuestaObject.res11,
+                res12: encuestaObject.res12,
+                res13: encuestaObject.res13,
+                res14: encuestaObject.res14,
+                res15: encuestaObject.res15,
+                res16: encuestaObject.res16,
+                res17: encuestaObject.res17
+            });
+    }
     return(
         <Layout>
             <Nabvar />
@@ -14,7 +76,7 @@ export default function GraduateSurvey() {
 
             <MessageInfo />
 
-            <div className="quizz-main m-auto">
+            <form className="quizz-main m-auto" onSubmit={createEncuesta}>
                 {/* Módulo periodo de egreso y año de egreso*/}
                 <div className="box">
                     <div className="tags">
@@ -24,19 +86,19 @@ export default function GraduateSurvey() {
                     <div className="section-check block">
                         <div className="control">
                             <label className="radio">
-                                <input type="radio" className="m-rght" name="answer" />
+                                <input onChange={handleInputChange} type="radio" className="m-rght" name="res1" />
                                 Enero - Abril
                             </label>
                         </div>
                         <div className="control">
                             <label className="radio">
-                                <input type="radio" className="m-rght" name="answer" />
+                                <input onChange={handleInputChange} type="radio" className="m-rght" name="res1" />
                                 Mayo - Agosto
                             </label>
                         </div>
                         <div className="control">
                             <label className="radio">
-                                <input type="radio" className="m-rght" name="answer" />
+                                <input onChange={handleInputChange} type="radio" className="m-rght" name="res1" />
                                 Septiembre - Diciembre
                             </label>
                         </div>
@@ -44,29 +106,29 @@ export default function GraduateSurvey() {
                     <label className="label">Año de egreso:</label>
                     <div className="select">
                         <select>
-                            <option>2021</option>
-                            <option>2020</option>
-                            <option>2019</option>
-                            <option>2018</option>
-                            <option>2017</option>
-                            <option>2016</option>
-                            <option>2015</option>
-                            <option>2014</option>
-                            <option>2013</option>
-                            <option>2012</option>
-                            <option>2011</option>
-                            <option>2010</option>
-                            <option>2009</option>
-                            <option>2008</option>
-                            <option>2007</option>
-                            <option>2006</option>
-                            <option>2005</option>
+                        <option name="res2" value="2021"  onChange={handleInputChange}>2021</option>
+                        <option name="res2" value="2020"  onChange={handleInputChange}>2020</option>
+                        <option name="res2" value="2019"  onChange={handleInputChange}>2019</option>
+                        <option name="res2" value="2018"  onChange={handleInputChange}>2018</option>
+                        <option name="res2" value="2017"  onChange={handleInputChange}>2017</option>
+                        <option name="res2" value="2016"  onChange={handleInputChange}>2016</option>
+                        <option name="res2" value="2015"  onChange={handleInputChange}>2015</option>
+                        <option name="res2" value="2014"  onChange={handleInputChange}>2014</option>
+                        <option name="res2" value="2013"  onChange={handleInputChange}>2013</option>
+                        <option name="res2" value="2012"  onChange={handleInputChange}>2012</option>
+                        <option name="res2" value="2011"  onChange={handleInputChange}>2011</option>
+                        <option name="res2" value="2010"  onChange={handleInputChange}>2010</option>
+                        <option name="res2" value="2009"  onChange={handleInputChange}>2009</option>
+                        <option name="res2" value="2008"  onChange={handleInputChange}>2008</option>
+                        <option name="res2" value="2007"  onChange={handleInputChange}>2007</option>
+                        <option name="res2" value="2006"  onChange={handleInputChange}>2006</option>
+                        <option name="res2" value="2005"  onChange={handleInputChange}>2005</option>
                         </select>
                     </div>
                 </div>
                 <div className="field is-horizontal box">
                     <div className="tags">
-                        <label className="label has-text-light">Desempeño profesional<span className="forma"></span></label>
+                        <label className="label has-text-light">Desempeño profesional<span className="form"></span></label>
                     </div>
                     <div className="field-is is-normal" id="field-quizz">
                         <label className="label">Empresa en dónde realizaste Estancias I: </label>
@@ -74,7 +136,7 @@ export default function GraduateSurvey() {
                     <div className="field-body block">
                         <div className="field">
                             <p className="control">
-                                <input className="input is-purple" type="text" placeholder="respuesta" />
+                                <input onChange={handleInputChange} className="input is-purple" type="text" placeholder="respuesta" name="res3"/>
                             </p>
                         </div>
                     </div>
@@ -84,7 +146,7 @@ export default function GraduateSurvey() {
                     <div className="field-body block">
                         <div className="field">
                             <p className="control">
-                                <input className="input is-purple" type="text" placeholder="respuesta" />
+                                <input onChange={handleInputChange} className="input is-purple" type="text" placeholder="respuesta" name="res4"/>
                             </p>
                         </div>
                     </div>
@@ -94,7 +156,7 @@ export default function GraduateSurvey() {
                     <div className="field-body block">
                         <div className="field">
                             <p className="control">
-                                <input className="input is-purple" type="text" placeholder="respuesta" />
+                                <input onChange={handleInputChange} className="input is-purple" type="text" placeholder="respuesta" name="res5"/>
                             </p>
                         </div>
                     </div>
@@ -103,14 +165,14 @@ export default function GraduateSurvey() {
                         <div className="block">
                             <label className="label">¿Realizaste proceso de dualidad? </label>
                             <div className="section-check">
-                                <label className="checkbox">
-                                    <input type="checkbox" className="m-rght" />
+                                <label className="radio">
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res6"/>
                                     Si
                                 </label>
                             </div>
                             <div className="section-check">
-                                <label className="checkbox">
-                                    <input type="checkbox" className="m-rght" />
+                                <label className="radio">
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res6"/>
                                     No
                                 </label>
                             </div>
@@ -120,20 +182,20 @@ export default function GraduateSurvey() {
 
                             <label className="label">En qué cuatrimestre(s): </label>
                             <div className="section-check">
-                                <label className="checkbox">
-                                    <input type="checkbox" className="m-rght" />
+                                <label className="radio">
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res7"/>
                                     7mo
                                 </label>
                             </div>
                             <div className="section-check">
-                                <label className="checkbox">
-                                    <input type="checkbox" className="m-rght" />
+                                <label className="radio">
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res7"/>
                                     8vo
                                 </label>
                             </div>
                             <div className="section-check">
-                                <label className="checkbox">
-                                    <input type="checkbox" className="m-rght" />
+                                <label className="radio">
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res7"/>
                                     9no
                                 </label>
                             </div>
@@ -145,7 +207,7 @@ export default function GraduateSurvey() {
                             <div className="field-body">
                                 <div className="field">
                                     <p className="control">
-                                        <input className="input is-purple" type="text" placeholder="respuesta" />
+                                        <input onChange={handleInputChange} className="input is-purple" type="text" placeholder="respuesta" name="res8"/>
                                     </p>
                                 </div>
                             </div>
@@ -161,14 +223,14 @@ export default function GraduateSurvey() {
                     <div className="block">
                         <label className="label">¿Trabajas actualmente en algún perfil relacionado a tu licenciatura? </label>
                         <div className="section-check">
-                            <label className="checkbox">
-                                <input type="checkbox" className="m-rght" />
+                            <label className="radio">
+                                <input onChange={handleInputChange} type="radio" className="m-rght" name="res9"/>
                                 Si
                             </label>
                         </div>
                         <div className="section-check">
-                            <label className="checkbox">
-                                <input type="checkbox" className="m-rght" />
+                            <label className="radio">
+                                <input onChange={handleInputChange} type="radio" className="m-rght" name="res9"/>
                                 No
                             </label>
                         </div>
@@ -180,7 +242,7 @@ export default function GraduateSurvey() {
                         <div className="field-body">
                             <div className="field">
                                 <p className="control">
-                                    <input className="input is-purple" type="text" placeholder="respuesta" />
+                                    <input onChange={handleInputChange} className="input is-purple" type="text" placeholder="respuesta" name="res10"/>
                                 </p>
                             </div>
                         </div>
@@ -198,25 +260,25 @@ export default function GraduateSurvey() {
                         <div className="section-check block">
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res11" />
                                     1 Insuficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res11" />
                                     2 Deficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res11" />
                                     3 Suficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res11" />
                                     4 Bueno
                                 </label>
                             </div>
@@ -229,25 +291,25 @@ export default function GraduateSurvey() {
                         <div className="section-check block">
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res12" />
                                     1 Insuficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res12" />
                                     2 Deficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res12" />
                                     3 Suficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res12" />
                                     4 Bueno
                                 </label>
                             </div>
@@ -260,25 +322,25 @@ export default function GraduateSurvey() {
                         <div className="section-check block">
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res13" />
                                     1 Insuficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res13" />
                                     2 Deficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res13" />
                                     3 Suficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res13" />
                                     4 Bueno
                                 </label>
                             </div>
@@ -292,25 +354,25 @@ export default function GraduateSurvey() {
                         <div className="section-check block">
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res14" />
                                     1 Insuficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res14" />
                                     2 Deficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res14" />
                                     3 Suficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res14" />
                                     4 Bueno
                                 </label>
                             </div>
@@ -323,25 +385,25 @@ export default function GraduateSurvey() {
                         <div className="section-check block">
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res15" />
                                     1 Insuficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res15" />
                                     2 Deficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res15" />
                                     3 Suficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res15" />
                                     4 Bueno
                                 </label>
                             </div>
@@ -356,25 +418,25 @@ export default function GraduateSurvey() {
                         <div className="section-check block">
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res16" />
                                     1 Insuficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res16" />
                                     2 Deficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res16" />
                                     3 Suficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res16" />
                                     4 Bueno
                                 </label>
                             </div>
@@ -388,25 +450,25 @@ export default function GraduateSurvey() {
                         <div className="section-check block">
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res17" />
                                     1 Insuficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res17" />
                                     2 Deficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res17" />
                                     3 Suficiente
                                 </label>
                             </div>
                             <div>
                                 <label className="radio">
-                                    <input type="radio" className="m-rght" name="answer" />
+                                    <input onChange={handleInputChange} type="radio" className="m-rght" name="res17" />
                                     4 Bueno
                                 </label>
                             </div>
@@ -415,7 +477,7 @@ export default function GraduateSurvey() {
                 </div>
                 {/* Botón de guardar encuesta*/}
                 <ButtonSave />
-            </div>
+            </form>
         </Layout>
     );
 }
