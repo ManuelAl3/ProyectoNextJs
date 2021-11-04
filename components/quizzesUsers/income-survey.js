@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Layout from '../Layout';
 import { db } from '../../firebase';
-import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
+import { collection, getDocs} from "firebase/firestore";
 
 export default function IncomeSurvey(){
 
@@ -30,9 +30,6 @@ export default function IncomeSurvey(){
             {eIngreso.map((e) => {
               return (
                 <div className="field is-horizontal box">
-                  <div className="title-main-quizz block">
-                    <p className="title is-4">Jonathan Moran Aguilar</p>
-                  </div>
                   <div className="field-is is-normal">
                     <label name="question_id" className="label">
                       Escuela de procedencia
