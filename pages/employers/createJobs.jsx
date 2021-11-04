@@ -172,18 +172,6 @@ export default function createJobs() {
         </div>
         <ButtonSave></ButtonSave>
       </form>
-      <div>
-          <div className={styles.burbuja}></div>
-          <div className={styles.burbuja}></div>
-          <div className={styles.burbuja}></div>
-          <div className={styles.burbuja}></div>
-          <div className={styles.burbuja}></div>
-          <div className={styles.burbuja}></div>
-          <div className={styles.burbuja}></div>
-          <div className={styles.burbuja}></div>
-          <div className={styles.burbuja}></div>
-          <div className={styles.burbuja}></div>
-      </div>
     </>
   );
 }
