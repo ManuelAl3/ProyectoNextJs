@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-
 import Layout from '../../components/Layout';
 import ButtonSave from '../../components/buttonSave';
 import MessageInfo from '../../components/messageInfo';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
 import { db } from '../../firebase';
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
 
@@ -67,15 +65,15 @@ export default function StudentIdentification(){
         setEncuesta({...encuesta, [name]: value});
     }
 
-    const createEncuesta = e => {
-        e.preventDefault();
+    const createEncuesta = () => {
+        //e.preventDefault();
         console.log(encuesta);
         addEncuesta(encuesta);
       };
 
     const addEncuesta = async (encuestaObject) =>{
         await addDoc(
-            eIngresoColRef, 
+            eIngresoColRef,
             {
                 res1: encuestaObject.res1,
                 res2: encuestaObject.res2,
@@ -122,6 +120,7 @@ export default function StudentIdentification(){
                 res43: encuestaObject.res43
             });
     }
+
     // FRONTEND
     const router = useRouter();
     const alertActivated = () => {
@@ -270,29 +269,52 @@ export default function StudentIdentification(){
                     <div className="field">
                       <p className="control">
                         <input
+                          {...register("res3", {
+                            required: {
+                              value: true,
+                              message: "Campo obligatorio",
+                            },
+                          })}
                           onChange={handleInputChange}
                           name="res3"
                           className="input is-purple"
-                          type="text"
+                          type="number"
                           placeholder="respuesta"
                         />
+                        {errors.res3 && (
+                          <p className="error-message-field">
+                            ¡{errors.res3.message}!
+                          </p>
+                        )}
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
+              {/* Fecha de nacimiento*/}
               <div className="block">
                 <label className="label">
                   Fecha de nacimiento: <span className="span-req">*</span>
                 </label>
                 <form>
                   <input
+                    {...register("res4", {
+                      required: {
+                        value: true,
+                        message: "Campo obligatorio",
+                      },
+                    })}
                     onChange={handleInputChange}
-                    name="res4"
                     className="input is-purple"
+                    name="res4"
                     type="date"
-                    name="day"
+                    placeholder="nacimiento"
                   />
+                  {errors.res4 && (
+                    <p className="error-message-field">
+                      ¡{errors.res4.message}!
+                    </p>
+                  )}
                 </form>
               </div>
               {/* Género*/}
@@ -304,7 +326,9 @@ export default function StudentIdentification(){
                   <div className="control">
                     <label className="radio">
                       <input
+                        {...register("radio", { required: true })}
                         onChange={handleInputChange}
+                        className="m-rght"
                         type="radio"
                         name="answer"
                         name="res5"
@@ -316,8 +340,10 @@ export default function StudentIdentification(){
                   <div className="control">
                     <label className="radio">
                       <input
+                        {...register("radio", { required: true })}
                         onChange={handleInputChange}
                         type="radio"
+                        className="m-rght"
                         name="answer"
                         name="res5"
                         value="Masculino"
@@ -328,8 +354,10 @@ export default function StudentIdentification(){
                   <div className="control">
                     <label className="radio">
                       <input
+                        {...register("radio", { required: true })}
                         onChange={handleInputChange}
                         type="radio"
+                        className="m-rght"
                         name="answer"
                         name="res5"
                         value="Otro"
@@ -337,6 +365,9 @@ export default function StudentIdentification(){
                       otro
                     </label>
                   </div>
+                  {errors.radio && (
+                    <p className="error-message-field">¡Campo obligatorio!</p>
+                  )}
                 </div>
               </div>
               {/* CURP*/}
@@ -351,12 +382,18 @@ export default function StudentIdentification(){
                     <div className="field">
                       <p className="control">
                         <input
+                          {...register("res6", { required: true })}
                           onChange={handleInputChange}
                           name="res6"
                           className="input is-purple"
                           type="text"
                           placeholder="respuesta"
                         />
+                        {errors.radio && (
+                          <p className="error-message-field">
+                            ¡Campo obligatorio!
+                          </p>
+                        )}
                       </p>
                     </div>
                   </div>
@@ -367,7 +404,7 @@ export default function StudentIdentification(){
                 <div className="field is-horizontal">
                   <div className="field-is is-normal" id="field-quizz">
                     <label className="label">
-                      Correo electrónico alternativo:{" "}
+                      Correo electrónico alternativo:
                       <span className="span-req">*</span>
                     </label>
                   </div>
@@ -375,12 +412,18 @@ export default function StudentIdentification(){
                     <div className="field">
                       <p className="control">
                         <input
+                          {...register("res7", { required: true })}
                           onChange={handleInputChange}
-                          name="res7"
+                          name="email"
                           className="input is-purple"
                           type="text"
                           placeholder="respuesta"
                         />
+                        {errors.res7 && (
+                          <p className="error-message-field">
+                            ¡Campo obligatorio!
+                          </p>
+                        )}
                       </p>
                     </div>
                   </div>
@@ -398,12 +441,18 @@ export default function StudentIdentification(){
                     <div className="field">
                       <p className="control input-width-small">
                         <input
+                          {...register("res8", { required: true })}
                           onChange={handleInputChange}
                           name="res8"
                           className="input is-purple"
                           type="number"
                           placeholder="respuesta"
                         />
+                        {errors.res8 && (
+                          <p className="error-message-field">
+                            ¡Campo obligatorio!
+                          </p>
+                        )}
                       </p>
                     </div>
                   </div>
@@ -424,12 +473,18 @@ export default function StudentIdentification(){
                     <div className="field">
                       <p className="control">
                         <input
+                          {...register("res9", { required: true })}
                           onChange={handleInputChange}
                           name="res9"
                           className="input is-purple"
                           type="text"
                           placeholder="respuesta"
                         />
+                        {errors.res9 && (
+                          <p className="error-message-field">
+                            ¡Campo obligatorio!
+                          </p>
+                        )}
                       </p>
                     </div>
                   </div>
@@ -443,18 +498,24 @@ export default function StudentIdentification(){
                     <div className="field">
                       <p className="control">
                         <input
+                          {...register("res10", { required: true })}
                           onChange={handleInputChange}
                           name="res10"
                           className="input is-purple"
                           type="text"
                           placeholder="respuesta"
                         />
+                        {errors.res10 && (
+                          <p className="error-message-field">
+                            ¡Campo obligatorio!
+                          </p>
+                        )}
                       </p>
                     </div>
                   </div>
                   <div className="field-is is-normal" id="field-quizz">
                     <label className="label" type="number">
-                      Número interior: <span className="span-req">*</span>
+                      Número interior:
                     </label>
                   </div>
                   <div className="field-body block">
@@ -472,7 +533,7 @@ export default function StudentIdentification(){
                   </div>
                   <div className="field-is is-normal" id="field-quizz">
                     <label className="label">
-                      Colonia/Fraccionamiento:{" "}
+                      Colonia/Fraccionamiento:
                       <span className="span-req">*</span>
                     </label>
                   </div>
@@ -480,12 +541,18 @@ export default function StudentIdentification(){
                     <div className="field">
                       <p className="control">
                         <input
+                          {...register("res12", { required: true })}
                           onChange={handleInputChange}
                           name="res12"
                           className="input is-purple"
                           type="text"
                           placeholder="respuesta"
                         />
+                        {errors.res12 && (
+                          <p className="error-message-field">
+                            ¡Campo obligatorio!
+                          </p>
+                        )}
                       </p>
                     </div>
                   </div>
@@ -499,12 +566,18 @@ export default function StudentIdentification(){
                     <div className="field">
                       <p className="control">
                         <input
+                          {...register("res13", { required: true })}
                           onChange={handleInputChange}
                           name="res13"
                           className="input is-purple"
                           type="text"
                           placeholder="respuesta"
                         />
+                        {errors.res13 && (
+                          <p className="error-message-field">
+                            ¡Campo obligatorio!
+                          </p>
+                        )}
                       </p>
                     </div>
                   </div>
@@ -518,12 +591,18 @@ export default function StudentIdentification(){
                     <div className="field">
                       <p className="control">
                         <input
+                          {...register("res14", { required: true })}
                           onChange={handleInputChange}
                           name="res14"
                           className="input is-purple"
                           type="text"
                           placeholder="respuesta"
                         />
+                        {errors.res14 && (
+                          <p className="error-message-field">
+                            ¡Campo obligatorio!
+                          </p>
+                        )}
                       </p>
                     </div>
                   </div>
@@ -537,12 +616,18 @@ export default function StudentIdentification(){
                     <div className="field">
                       <p className="control">
                         <input
+                          {...register("res15", { required: true })}
                           onChange={handleInputChange}
                           name="res15"
                           className="input is-purple"
                           type="text"
                           placeholder="respuesta"
                         />
+                        {errors.res15 && (
+                          <p className="error-message-field">
+                            ¡Campo obligatorio!
+                          </p>
+                        )}
                       </p>
                     </div>
                   </div>
@@ -567,69 +652,18 @@ export default function StudentIdentification(){
                   <div className="field">
                     <p className="control">
                       <input
+                        {...register("res16", { required: true })}
                         onChange={handleInputChange}
+                        className="input is-purple"
+                        type="text"
                         name="res16"
-                        className="input is-purple"
-                        type="text"
                         placeholder="respuesta"
                       />
-                    </p>
-                  </div>
-                </div>
-              </div>
-              {/*  Módulo checkbox*/}
-              <div className="block">
-                <label className="label">
-                  En caso de padecer alguna enfermedad ¿recibes tratamiento?:{" "}
-                </label>
-                <div className="section-check">
-                  <div className="control">
-                    <label className="radio">
-                      <input
-                        onChange={handleInputChange}
-                        name="res17"
-                        type="radio"
-                        value="Si"
-                      />
-                      Si
-                    </label>
-                  </div>
-                  <div className="control">
-                    <label className="radio">
-                      <input
-                        onChange={handleInputChange}
-                        name="res17"
-                        type="radio"
-                        value="No"
-                      />
-                      No
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/*  Módulo enfermedad/discapacidad*/}
-            <div className="field is-horizontal box">
-              <div className="tags">
-                <label className="label has-text-light">
-                  Datos de emergencia<span className="forma"></span>
-                </label>
-              </div>
-              <div className="block">
-                <div className="field-is is-normal" id="field-quizz">
-                  <label className="label">
-                    Si padeces alguna enfermedad o discapacidad favor de
-                    indicarla: <span className="span-req">*</span>
-                  </label>
-                </div>
-                <div className="field-body block">
-                  <div className="field">
-                    <p className="control">
-                      <input
-                        className="input is-purple"
-                        type="text"
-                        placeholder="respuesta"
-                      />
+                      {errors.res16 && (
+                        <p className="error-message-field">
+                          ¡Campo obligatorio!
+                        </p>
+                      )}
                     </p>
                   </div>
                 </div>
@@ -678,12 +712,18 @@ export default function StudentIdentification(){
                   <div className="field">
                     <p className="control">
                       <input
+                        {...register("res18", { required: true })}
                         onChange={handleInputChange}
                         name="res18"
                         className="input is-purple"
                         type="text"
                         placeholder="respuesta"
                       />
+                      {errors.res18 && (
+                        <p className="error-message-field">
+                          ¡Campo obligatorio!
+                        </p>
+                      )}
                     </p>
                   </div>
                 </div>
@@ -697,12 +737,18 @@ export default function StudentIdentification(){
                   <div className="field">
                     <p className="control">
                       <input
+                        {...register("res19", { required: true })}
                         onChange={handleInputChange}
                         name="res19"
                         className="input is-purple"
                         type="text"
                         placeholder="respuesta"
                       />
+                      {errors.res19 && (
+                        <p className="error-message-field">
+                          ¡Campo obligatorio!
+                        </p>
+                      )}
                     </p>
                   </div>
                 </div>
@@ -716,12 +762,18 @@ export default function StudentIdentification(){
                   <div className="field">
                     <p className="control">
                       <input
+                        {...register("res20", { required: true })}
                         onChange={handleInputChange}
                         name="res20"
                         className="input is-purple"
                         type="text"
                         placeholder="respuesta"
                       />
+                      {errors.res20 && (
+                        <p className="error-message-field">
+                          ¡Campo obligatorio!
+                        </p>
+                      )}
                     </p>
                   </div>
                 </div>
@@ -735,12 +787,18 @@ export default function StudentIdentification(){
                   <div className="field">
                     <p className="control">
                       <input
+                        {...register("res21", { required: true })}
                         onChange={handleInputChange}
                         name="res21"
                         className="input is-purple"
                         type="text"
                         placeholder="respuesta"
                       />
+                      {errors.res21 && (
+                        <p className="error-message-field">
+                          ¡Campo obligatorio!
+                        </p>
+                      )}
                     </p>
                   </div>
                 </div>
@@ -754,12 +812,18 @@ export default function StudentIdentification(){
                   <div className="field">
                     <p className="control input-width-small">
                       <input
+                        {...register("res22", { required: true })}
                         onChange={handleInputChange}
                         name="res22"
                         className="input is-purple"
                         type="number"
                         placeholder="respuesta"
                       />
+                      {errors.res22 && (
+                        <p className="error-message-field">
+                          ¡Campo obligatorio!
+                        </p>
+                      )}
                     </p>
                   </div>
                 </div>
@@ -795,7 +859,7 @@ export default function StudentIdentification(){
                 </div>
                 <div className="field-is is-normal" id="field-quizz">
                   <label className="label" type="number">
-                    Número exterior:{" "}
+                    Número exterior:
                   </label>
                 </div>
                 <div className="field">
@@ -811,7 +875,7 @@ export default function StudentIdentification(){
                 </div>
                 <div className="field-is is-normal" id="field-quizz">
                   <label className="label" type="number">
-                    Número interior:{" "}
+                    Número interior:
                   </label>
                 </div>
                 <div className="field-body block">
@@ -908,12 +972,18 @@ export default function StudentIdentification(){
                   <div className="field">
                     <p className="control">
                       <input
+                        {...register("res31", { required: true })}
                         onChange={handleInputChange}
                         name="res31"
                         className="input is-purple"
                         type="text"
                         placeholder="respuesta"
                       />
+                      {errors.res31 && (
+                        <p className="error-message-field">
+                          ¡Campo obligatorio!
+                        </p>
+                      )}
                     </p>
                   </div>
                 </div>
@@ -927,12 +997,18 @@ export default function StudentIdentification(){
                   <div className="field">
                     <p className="control">
                       <input
+                        {...register("res32", { required: true })}
                         onChange={handleInputChange}
                         name="res32"
                         className="input is-purple"
                         type="text"
                         placeholder="respuesta"
                       />
+                      {errors.res32 && (
+                        <p className="error-message-field">
+                          ¡Campo obligatorio!
+                        </p>
+                      )}
                     </p>
                   </div>
                 </div>
@@ -946,12 +1022,18 @@ export default function StudentIdentification(){
                   <div className="field">
                     <p className="control">
                       <input
+                        {...register("res33", { required: true })}
                         onChange={handleInputChange}
                         name="res33"
                         className="input is-purple"
                         type="text"
                         placeholder="respuesta"
                       />
+                      {errors.res33 && (
+                        <p className="error-message-field">
+                          ¡Campo obligatorio!
+                        </p>
+                      )}
                     </p>
                   </div>
                 </div>
@@ -965,12 +1047,18 @@ export default function StudentIdentification(){
                   <div className="field">
                     <p className="control">
                       <input
+                        {...register("res34", { required: true })}
                         onChange={handleInputChange}
                         name="res34"
                         className="input is-purple"
                         type="text"
                         placeholder="respuesta"
                       />
+                      {errors.res34 && (
+                        <p className="error-message-field">
+                          ¡Campo obligatorio!
+                        </p>
+                      )}
                     </p>
                   </div>
                 </div>
@@ -984,12 +1072,18 @@ export default function StudentIdentification(){
                   <div className="field">
                     <p className="control input-width-small">
                       <input
+                        {...register("res35", { required: true })}
                         onChange={handleInputChange}
                         name="res35"
                         className="input is-purple"
                         type="number"
                         placeholder="respuesta"
                       />
+                      {errors.res35 && (
+                        <p className="error-message-field">
+                          ¡Campo obligatorio!
+                        </p>
+                      )}
                     </p>
                   </div>
                 </div>
@@ -1025,7 +1119,7 @@ export default function StudentIdentification(){
                 </div>
                 <div className="field-is is-normal" id="field-quizz">
                   <label className="label" type="number">
-                    Número exterior:{" "}
+                    Número exterior:
                   </label>
                 </div>
                 <div className="field">
@@ -1041,7 +1135,7 @@ export default function StudentIdentification(){
                 </div>
                 <div className="field-is is-normal" id="field-quizz">
                   <label className="label" type="number">
-                    Número interior:{" "}
+                    Número interior:
                   </label>
                 </div>
                 <div className="field-body block">

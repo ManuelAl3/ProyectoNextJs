@@ -39,8 +39,8 @@ export default function GraduateSurvey() {
         setEncuesta({...encuesta, [name]: value});
     }
 
-    const createEncuesta = e => {
-        e.preventDefault();
+    const createEncuesta = () => {
+        //e.preventDefault();
         for (let index = 0; index < document.getElementsByName('res4[]').length; index++) {
             encuesta.res4[index]=document.getElementsByName('res4[]')[index].checked;
         };
@@ -96,6 +96,12 @@ export default function GraduateSurvey() {
     return (
       <>
         <Layout>
+          <div className="title-main-quizz block">
+            <p className="title is-2">Encuesta de egresados</p>
+          </div>
+
+          <MessageInfo />
+
           <form className="quizz-main m-auto" onSubmit={handleSubmit(onSubmit)}>
             {/* Módulo periodo de egreso y año de egreso*/}
             <div className="box">

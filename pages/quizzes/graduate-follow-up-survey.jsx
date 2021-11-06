@@ -2,8 +2,12 @@ import Layout from '../../components/Layout';
 import ButtonSave from '../../components/buttonSave';
 import MessageInfo from '../../components/messageInfo';
 import { useForm } from 'react-hook-form';
-import Swal from 'sweetalert2';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
+import Swal from 'sweetalert2';
+
+import { db } from '../../firebase';
+import { collection, addDoc } from "firebase/firestore";
 
 export default function GraduateFollowUp(){
   //BACKEND

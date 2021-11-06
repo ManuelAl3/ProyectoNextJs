@@ -67,7 +67,6 @@ export default function StudyEconomic(){
     return (
       <>
         <Layout>
-
           <div className="title-main-quizz block">
             <p className="title is-2">Estudio socio - económico</p>
           </div>
@@ -82,34 +81,57 @@ export default function StudyEconomic(){
                 </label>
                 <div className="section-check">
                   <label className="checkbox">
-                    <input type="checkbox" className="m-rght" />
+                    <input
+                      {...register("checkbox", { required: true })}
+                      type="checkbox"
+                      className="m-rght"
+                    />
                     Soltero(a)
                   </label>
                 </div>
                 <div className="section-check">
                   <label className="checkbox">
-                    <input type="checkbox" className="m-rght" />
+                    <input
+                      {...register("checkbox", { required: true })}
+                      type="checkbox"
+                      className="m-rght"
+                    />
                     Casado(a)
                   </label>
                 </div>
                 <div className="section-check">
                   <label className="checkbox">
-                    <input type="checkbox" className="m-rght" />
+                    <input
+                      {...register("checkbox", { required: true })}
+                      type="checkbox"
+                      className="m-rght"
+                    />
                     Unión libre
                   </label>
                 </div>
                 <div className="section-check">
                   <label className="checkbox">
-                    <input type="checkbox" className="m-rght" />
+                    <input
+                      {...register("checkbox", { required: true })}
+                      type="checkbox"
+                      className="m-rght"
+                    />
                     Divorciado(a)
                   </label>
                 </div>
                 <div className="section-check">
                   <label className="checkbox">
-                    <input type="checkbox" className="m-rght" />
+                    <input
+                      {...register("checkbox", { required: true })}
+                      type="checkbox"
+                      className="m-rght"
+                    />
                     Viudo(a)
                   </label>
                 </div>
+                {errors.checkbox && (
+                  <p className="error-message-field">¡Campo obligatorio!</p>
+                )}
               </div>
 
               {/* Checkbox */}
@@ -133,7 +155,7 @@ export default function StudyEconomic(){
                 <div className="field is-horizontal">
                   <div className="field-is is-normal" id="field-quizz">
                     <label className="label">
-                      3. En caso de ser foráneo específica:{" "}
+                      3. En caso de ser foráneo específica:
                       <span className="span-req">*</span>
                     </label>
                   </div>
@@ -144,10 +166,16 @@ export default function StudyEconomic(){
                     <div className="field">
                       <p className="control">
                         <input
+                          {...register("res6", { required: true })}
                           className="input is-purple"
                           type="text"
                           placeholder="respuesta"
                         />
+                        {errors.radio && (
+                          <p className="error-message-field">
+                            ¡Campo obligatorio!
+                          </p>
+                        )}
                       </p>
                     </div>
                   </div>
@@ -158,10 +186,16 @@ export default function StudyEconomic(){
                     <div className="field">
                       <p className="control">
                         <input
+                          {...register("res6", { required: true })}
                           className="input is-purple"
                           type="text"
                           placeholder="respuesta"
                         />
+                        {errors.radio && (
+                          <p className="error-message-field">
+                            ¡Campo obligatorio!
+                          </p>
+                        )}
                       </p>
                     </div>
                   </div>
@@ -171,7 +205,7 @@ export default function StudyEconomic(){
                 <div className="field is-horizontal">
                   <div className="field-is is-normal" id="field-quizz">
                     <label className="label">
-                      4. ¿De quién dependes económicamente?{" "}
+                      4. ¿De quién dependes económicamente?
                     </label>
                   </div>
                   <div className="field-body block">
@@ -191,7 +225,7 @@ export default function StudyEconomic(){
                 <div className="field is-horizontal">
                   <div className="field-is is-normal" id="field-quizz">
                     <label className="label">
-                      5. ¿Quién paga tu inscripción?{" "}
+                      5. ¿Quién paga tu inscripción?
                     </label>
                   </div>
                   <div className="field-body block">
@@ -232,7 +266,7 @@ export default function StudyEconomic(){
                 <div className="field is-horizontal">
                   <div className="field-is is-normal" id="field-quizz">
                     <label className="label">
-                      7. ¿Con quién vives actualmente?{" "}
+                      7. ¿Con quién vives actualmente?
                       <span className="span-req">*</span>
                     </label>
                   </div>
@@ -240,10 +274,16 @@ export default function StudyEconomic(){
                     <div className="field">
                       <p className="control">
                         <input
+                          {...register("res", { required: true })}
                           className="input is-purple"
                           type="text"
                           placeholder="respuesta"
                         />
+                        {errors.res && (
+                          <p className="error-message-field">
+                            ¡Campo obligatorio!
+                          </p>
+                        )}
                       </p>
                     </div>
                   </div>
@@ -289,7 +329,7 @@ export default function StudyEconomic(){
                 <div className="field is-horizontal">
                   <div className="field-is is-normal" id="field-quizz">
                     <label className="label">
-                      10. Número de personas que dependen económicamente de ti{" "}
+                      10. Número de personas que dependen económicamente de ti
                       <span className="span-req">*</span>
                     </label>
                   </div>
@@ -297,10 +337,16 @@ export default function StudyEconomic(){
                     <div className="field">
                       <p className="control">
                         <input
+                          {...register("res", { required: true })}
                           className="input is-purple"
                           type="text"
                           placeholder="respuesta"
                         />
+                        {errors.res && (
+                          <p className="error-message-field">
+                            ¡Campo obligatorio!
+                          </p>
+                        )}
                       </p>
                     </div>
                   </div>
@@ -311,7 +357,7 @@ export default function StudyEconomic(){
                   <div className="field-is is-normal" id="field-quizz">
                     <label className="label">
                       11. ¿Cuántos miembros de tu familia aportan al ingreso
-                      familiar?{" "}
+                      familiar?
                     </label>
                   </div>
                   <div className="field-body block">
@@ -334,16 +380,21 @@ export default function StudyEconomic(){
                 </label>
                 <div className="section-check">
                   <label className="checkbox">
-                    <input type="checkbox" className="m-rght" />
+                    <input {...register("checkbox", { required: true })} type="checkbox" className="m-rght" />
                     Si
                   </label>
                 </div>
                 <div className="section-check">
                   <label className="checkbox">
-                    <input type="checkbox" className="m-rght" />
+                    <input {...register("checkbox", { required: true })} type="checkbox" className="m-rght" />
                     No
                   </label>
                 </div>
+                {errors.checkbox && (
+                  <p className="error-message-field">
+                    ¡Campo obligatorio!
+                  </p>
+                )}
               </div>
               <div className="block">
                 <div className="field is-horizontal">
@@ -384,21 +435,26 @@ export default function StudyEconomic(){
               {/* Checkbox */}
               <div className="block">
                 <label className="label">
-                  15. ¿Cuentas actualmente con alguna beca?{" "}
+                  15. ¿Cuentas actualmente con alguna beca?
                   <span className="span-req">*</span>
                 </label>
                 <div className="section-check">
                   <label className="checkbox">
-                    <input type="checkbox" className="m-rght" />
+                    <input {...register("checkbox", { required: true })} type="checkbox" className="m-rght" />
                     Si
                   </label>
                 </div>
                 <div className="section-check">
                   <label className="checkbox">
-                    <input type="checkbox" className="m-rght" />
+                    <input {...register("checkbox", { required: true })} type="checkbox" className="m-rght" />
                     No
                   </label>
                 </div>
+                {errors.checkbox && (
+                  <p className="error-message-field">
+                    ¡Campo obligatorio!
+                  </p>
+                )}
               </div>
               <div className="block">
                 <div className="field is-horizontal">
@@ -421,7 +477,7 @@ export default function StudyEconomic(){
               {/* Checkbox */}
               <div className="block">
                 <label className="label">
-                  15. ¿Cuentas actualmente con alguna beca?{" "}
+                  15. ¿Cuentas actualmente con alguna beca?
                 </label>
                 <div className="section-check">
                   <label className="checkbox">
