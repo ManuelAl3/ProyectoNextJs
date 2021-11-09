@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { signup, logout, useAuth } from '../../firebase';
 import { useRef } from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/dist/client/router';
 
 import { db } from '../../firebase';
 import { collection, addDoc } from "firebase/firestore";
@@ -10,6 +11,18 @@ import { async } from '@firebase/util';
 export default function Signup() {
   const [ loading, setLoading ] = useState(false);
   const currentUser = useAuth();
+
+    //-------CurrentUser-Redirect--------
+    const router = useRouter();
+    /*useEffect(() =>{
+     if(currentUser){
+     //alert(currentUser);
+     router.push('../admin/administrador');
+     }else{
+       console.log("¡No nay usuario activo!");
+     }
+    }, []) */
+    //-------CurrentUser-Redirect--------
 
   const registroColRef = collection(db, "usuarios");
   const initialStateValues = {
@@ -41,7 +54,7 @@ export default function Signup() {
           second_last_name:registroObject.second_last_name,
           email:registroObject.email,
           password:registroObject.password,
-          selectRol:registroObject.rol
+          selectRol:registroObject.selectRol
         });
   }
 
@@ -55,6 +68,7 @@ export default function Signup() {
         setLoading(true);
         await signup(emailRef.current.value, passRef.current.value);
         createRegistro();
+        router.push('../admin/administrador');
       } catch {
         alert("Error!");
       }
