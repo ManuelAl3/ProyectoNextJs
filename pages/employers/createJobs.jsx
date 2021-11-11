@@ -36,7 +36,7 @@ export default function createJobs() {
           priority
           src="/images/employers.svg"
           height={200}
-          width={300}
+          width={200}
           alt="..."
         />
       </div>
@@ -111,7 +111,7 @@ export default function createJobs() {
         </div>
 
         <div className="field">
-          <label className="label">Name</label>
+          <label className="label">Nombre de contacto</label>
           <div className="control">
             <input
               className="input"

@@ -235,11 +235,6 @@ export default function IncomeSurvey(){
                     </label>
                   </div>
                 </div>
-                {errors.radio && (
-                  <p className="error-message-field">
-                    ¡Campo obligatorio!
-                  </p>
-                )}
                 <div className="control ">
                   <div className="field-is is-normal">
                     <label className="label">Otro:</label>
@@ -313,11 +308,6 @@ export default function IncomeSurvey(){
                     reingeniería de las tecnologías de la información.
                   </label>
                 </div>
-                {errors.checkbox && (
-                  <p className="error-message-field">
-                    ¡Campo obligatorio!
-                  </p>
-                )}
                 <div className="control ">
                   <div className="field-is is-normal">
                     <label name="question_id" className="label">

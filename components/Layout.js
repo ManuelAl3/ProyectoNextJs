@@ -25,7 +25,7 @@ export default function Layout({ children, title, description, props}) {
           <title> {title} </title>
         </Head>
 
-        {/*<Nabvar />*/}
+        <Nabvar />
 
         <main>
           {children}
@@ -45,6 +45,7 @@ export default function Layout({ children, title, description, props}) {
       </>
     );
 }
+
 Layout.defaultProps = {
   title: "Inicio de sesión",
   description: "Hola"

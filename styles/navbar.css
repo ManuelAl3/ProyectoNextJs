@@ -163,9 +163,6 @@
   border-radius: 12px;
 }
 .sidebar li.profile{
-  position: fixed;
-  height: 60px;
-  width: 78px;
   left: 0;
   bottom: -8px;
   padding: 10px 14px;
@@ -174,7 +171,7 @@
   overflow: hidden;
 }
 .sidebar.open li.profile{
-  width: 250px;
+  width: 100%;
 }
 .sidebar li .profile-details{
   display: flex;
@@ -190,6 +187,7 @@
 }
 .sidebar li.profile .name,
 .sidebar li.profile .job{
+  margin-left: 10px;
   font-size: 15px;
   font-weight: 400;
   color: #fff;

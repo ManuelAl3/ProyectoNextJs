@@ -25,6 +25,19 @@
     animation: imgTransicion2 2.5s ease-out;
 }
 
+.imgEmployers {
+    width: 25%;
+}
+
+.imgMain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    width: 100%;
+}
+
+
 @keyframes imgTransicion{
     0%{
         opacity: 0;
