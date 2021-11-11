@@ -62,7 +62,7 @@ export default function ForgotPassword() {
               </label>
             </div>
             <Link href="/">
-              <a ClassName="button is-rounded is-redounded-main">
+              <a className="button is-rounded is-redounded-main">
                 <button className="button is-rounded is-redounded-main">
                   Cancelar
                 </button>

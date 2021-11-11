@@ -5,6 +5,9 @@ import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import { useRouter } from 'next/router';
 
+import { db } from '../../db/firebase';
+import { collection, addDoc } from "firebase/firestore";
+
 export default function GraduateFollowUp(){
   //BACKEND
 

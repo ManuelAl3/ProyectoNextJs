@@ -5,20 +5,51 @@ import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import Link from 'next/link';
 
-import { db } from '../../firebase';
+
+import { db } from '../../db/firebase';
 import { collection, addDoc } from "firebase/firestore";
+import { login, signup, logout, useAuth } from '../../db/firebase';
+
 
 export default function IncomeSurvey(){
     const { register,handleSubmit, formState: { errors } } = useForm();
-     // BACKEND
-     const eIngresoColRef = collection(db, "encuestasIngreso");
+    // BACKEND
+    //----------------USERLOGGED------------------
+    const [ loading, setLoading ] = useState(false);
+    const currentUser = useAuth();
+  
+      //-------CurrentUser-Redirect--------
+      //const router = useRouter();
+      /*useEffect(() =>{
+        if(currentUser){
+        //alert(currentUser);
+        router.push('../admin/administrador');
+        }else{
+          console.log("¡No nay usuario activo!");
+        }
+      }, 5000) */
+    //-------CurrentUser-Redirect--------
+  
+    async function handleLogout(){
+      setLoading(true);
+      try {
+        logout();
+      } catch {
+        alert("Error!");
+      }
+      setLoading(false);
+    }
+    //----------------USERLOGGED------------------
+    const eIngresoColRef = collection(db, "encuestasIngreso");
 
     const initialStateValues = {
         res1:'',
         res2:'',
         res3:'',
-        res4:[]
+        res4:'',
+        user:''
     };
     const [encuesta, setEncuesta] = useState(initialStateValues);
 
@@ -30,9 +61,10 @@ export default function IncomeSurvey(){
 
     const createEncuesta = () => {
         //e.preventDefault();
-        for (let index = 0; index < document.getElementsByName('res4[]').length; index++) {
+        /* for (let index = 0; index < document.getElementsByName('res4[]').length; index++) {
             encuesta.res4[index]=document.getElementsByName('res4[]')[index].checked;
-        };
+        }; */
+        encuesta.user=currentUser.email;
         console.log(encuesta);
         addEncuesta(encuesta);
         //alert(newEIngresoR1,newEIngresoR2,newEIngresoR3,newEIngresoR4);
@@ -40,7 +72,7 @@ export default function IncomeSurvey(){
       };
 
     const addEncuesta = async (encuestaObject) =>{
-        await addDoc(eIngresoColRef, {res1: encuestaObject.res1, res2: encuestaObject.res2, res3: encuestaObject.res3, res4: encuestaObject.res4});
+        await addDoc(eIngresoColRef, {res1: encuestaObject.res1, res2: encuestaObject.res2, res3: encuestaObject.res3, res4: encuestaObject.res4, user: encuestaObject.user});
     }
 
     // FRONTEND
@@ -69,6 +101,60 @@ export default function IncomeSurvey(){
     return (
       <>
         <Layout>
+        {/*------------------------------------NAVBAR------------------------------------*/}
+        <div className="sidebar">
+            <div className="logo-details">
+                <i className='bx bxl-c-plus-plus icon'></i>
+                <div className="logo_name">Unipoli ISW</div>
+                <i className='bx bx-menu' id="btn"></i>
+            </div>
+            <ul className="nav-list">
+                <li>
+                    <i className='bx bx-search'></i>
+                    <input type="text" placeholder="Search..." />
+                    <span className ="tooltip">Buscar</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i className='bx bx-grid-alt'></i>
+                        <span className="links_name">Dashboard</span>
+                    </a>
+                    <span className="tooltip">Dashboard</span>
+                </li>
+                <li>
+                    <Link href="/admin/viewsUsers">
+                        <i className='bx bx-folder'></i>
+                        <span className="links_name">Encuestas</span>
+                    </Link>
+                    <span className="tooltip">Encuestas</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i className='bx bx-user'></i>
+                        <span className="links_name">{ currentUser?.email }</span>
+                    </a>
+                    <span className="tooltip">{ currentUser?.email }</span>
+                </li>
+                <li>
+                    <Link href="/" onClick={handleLogout}>
+                        <i className='bx bx-pie-chart-alt-2'></i>
+                        <span className="links_name">Cerrar Sesion</span>
+                    </Link>
+                    <span className="tooltip">Cerrar Sesion</span>
+                </li>
+                {/* <li className="profile">
+                    <div className="profile-details">
+                        <img src="../public/images/profile.jpg" alt="profileImg" />
+                        <div class ="name_job">
+                        <div class ="name">Manuel Alberto</div>
+                        <div class ="job">Alumno</div>
+                        </div>
+                    </div>
+                    <i className='bx bx-log-out' id="log_out"></i>
+                </li>*/}
+            </ul>
+        </div>
+        {/*------------------------------------NAVBAR------------------------------------*/}
           <div className="title-main-quizz blockzz">
             <p className="title is-2">
               Encuesta de ingreso al programa de estudios de ingeniería en software
@@ -162,7 +248,7 @@ export default function IncomeSurvey(){
                         type="radio"
                         name="res3"
                         className="m-rght"
-                        value="paginas"
+                        value="Páginas Web"
                         onChange={handleInputChange}
                       />
                       Páginas Web
@@ -175,7 +261,7 @@ export default function IncomeSurvey(){
                         type="radio"
                         name="res3"
                         className="m-rght"
-                        value="redes"
+                        value="Redes Sociales"
                         onChange={handleInputChange}
                       />
                       Redes Sociales
@@ -188,7 +274,8 @@ export default function IncomeSurvey(){
                         type="radio"
                         name="res3"
                         className="m-rght"
-                        value="medios"
+                        value="Medios de comunicación (televisión, radio, periódico,
+                          otro)"
                         onChange={handleInputChange}
                       />
                       Medios de comunicación (televisión, radio, periódico,
@@ -202,7 +289,7 @@ export default function IncomeSurvey(){
                         type="radio"
                         name="res3"
                         className="m-rght"
-                        value="vista"
+                        value="Visita guiada programada por mi bachillerato"
                         onChange={handleInputChange}
                       />
                       Visita guiada programada por mi bachillerato
@@ -215,7 +302,7 @@ export default function IncomeSurvey(){
                         type="radio"
                         name="res3"
                         className="m-rght"
-                        value="pendones"
+                        value="Pendones"
                         onChange={handleInputChange}
                       />
                       Pendones
@@ -228,7 +315,7 @@ export default function IncomeSurvey(){
                         type="radio"
                         name="res3"
                         className="m-rght"
-                        value="recomendación "
+                        value="Recomendación de alguien más"
                         onChange={handleInputChange}
                       />
                       Recomendación de alguien más
@@ -244,7 +331,7 @@ export default function IncomeSurvey(){
                       <p className="control">
                         <input
                           onChange={handleInputChange}
-                          name="answer"
+                          name="res3"
                           /*value={forms.answer}*/
                           className="input is-purple"
                           type="text"
@@ -263,7 +350,13 @@ export default function IncomeSurvey(){
                 <div className="section-check">
                   <label className="checkbox">
                     <input
-                      onChange={handleInputChange} name="res4[]" type="checkbox" className="m-rght" {...register("checkbox", { required: true })} />
+                      {...register("radio", { required: true })}
+                      name="res4"
+                      type="radio"
+                      className="m-rght"
+                      value="Diseñar y desarrollar software a la medida y/o genérico de calidad."
+                      onChange={handleInputChange}
+                      />
                     Diseñar y desarrollar software a la medida y/o genérico de
                     calidad.
                   </label>
@@ -271,7 +364,13 @@ export default function IncomeSurvey(){
                 <div className="section-check">
                   <label className="checkbox">
                     <input
-                      onChange={handleInputChange} name="res4[]" type="checkbox" className="m-rght" {...register("checkbox", { required: true })} />
+                      {...register("radio", { required: true })}
+                      name="res4"
+                      type="radio"
+                      className="m-rght"
+                      value="Diseñar y crear bases de datos y aplicaciones para su manipulación."
+                      onChange={handleInputChange}
+                      />
                     Diseñar y crear bases de datos y aplicaciones para su
                     manipulación.
                   </label>
@@ -279,7 +378,13 @@ export default function IncomeSurvey(){
                 <div className="section-check">
                   <label className="checkbox">
                     <input
-                      onChange={handleInputChange} name="res4[]" type="checkbox" className="m-rght" {...register("checkbox", { required: true })} />
+                      {...register("radio", { required: true })}
+                      name="res4"
+                      type="radio"
+                      className="m-rght"
+                      value="Gestionar, administrar e implementar proyectos de innovación en el área de software."
+                      onChange={handleInputChange}
+                      />
                     Gestionar, administrar e implementar proyectos de innovación
                     en el área de software.
                   </label>
@@ -287,7 +392,13 @@ export default function IncomeSurvey(){
                 <div className="section-check">
                   <label className="checkbox">
                     <input
-                      onChange={handleInputChange} name="res4[]" type="checkbox" className="m-rght" {...register("checkbox", { required: true })} />
+                      {...register("radio", { required: true })}
+                      name="res4"
+                      type="radio"
+                      className="m-rght"
+                      value="Proporcionar soporte técnico y estratégico a la infraestructura de tecnologías de información."
+                      onChange={handleInputChange}
+                      />
                     Proporcionar soporte técnico y estratégico a la
                     infraestructura de tecnologías de información.
                   </label>
@@ -295,7 +406,13 @@ export default function IncomeSurvey(){
                 <div className="section-check">
                   <label className="checkbox">
                     <input
-                      onChange={handleInputChange} name="res4[]" type="checkbox" className="m-rght" {...register("checkbox", { required: true })} />
+                      {...register("radio", { required: true })} 
+                      name="res4"
+                      type="radio"
+                      className="m-rght"
+                      value="Integrar nuevas soluciones de software a servicios modernos como el comercio electrónico."
+                      onChange={handleInputChange}
+                      />
                     Integrar nuevas soluciones de software a servicios modernos
                     como el comercio electrónico.
                   </label>
@@ -303,7 +420,13 @@ export default function IncomeSurvey(){
                 <div className="section-check">
                   <label className="checkbox">
                     <input
-                      onChange={handleInputChange} name="res4[]" type="checkbox" className="m-rght" {...register("checkbox", { required: true })} />
+                      {...register("radio", { required: true })}
+                      name="res4"
+                      type="radio"
+                      className="m-rght"
+                      value="Desarrollar investigación en el campo del desarrollo y reingeniería de las tecnologías de la información."
+                      onChange={handleInputChange}
+                      />
                     Desarrollar investigación en el campo del desarrollo y
                     reingeniería de las tecnologías de la información.
                   </label>

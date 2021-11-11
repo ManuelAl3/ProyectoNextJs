@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "@firebase/firestore";
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 import { useState, useEffect } from "react";
 
 // Your web app's Firebase configuration
@@ -24,6 +24,9 @@ const firebaseConfig = {
     return createUserWithEmailAndPassword(auth, email, password);
   }
 
+  export function login(email, password){
+    return signInWithEmailAndPassword(auth, email, password);
+  }
   export function logout(){
     return signOut(auth);
   }

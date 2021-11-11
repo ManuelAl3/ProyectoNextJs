@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Swal from 'sweetalert2';
 
-import { db } from '../../firebase';
+import { db } from '../../db/firebase';
 import { collection, addDoc } from "firebase/firestore";
 
 export default function GraduateFollowUp(){
@@ -363,7 +363,6 @@ export default function GraduateFollowUp(){
                     <input
                       type="radio"
                       className="m-rght"
-                      name="answer"
                       name="res5"
                       onChange={handleInputChange}
                     />
@@ -375,7 +374,6 @@ export default function GraduateFollowUp(){
                     <input
                       type="radio"
                       className="m-rght"
-                      name="answer"
                       name="res5"
                       onChange={handleInputChange}
                     />
@@ -387,7 +385,6 @@ export default function GraduateFollowUp(){
                     <input
                       type="radio"
                       className="m-rght"
-                      name="answer"
                       name="res5"
                       onChange={handleInputChange}
                     />
@@ -399,7 +396,6 @@ export default function GraduateFollowUp(){
                     <input
                       type="radio"
                       className="m-rght"
-                      name="answer"
                       name="res5"
                       onChange={handleInputChange}
                     />
@@ -411,7 +407,6 @@ export default function GraduateFollowUp(){
                     <input
                       type="radio"
                       className="m-rght"
-                      name="answer"
                       name="res5"
                       onChange={handleInputChange}
                     />

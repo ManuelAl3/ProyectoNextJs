@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Layout from '../Layout';
-import { db } from '../../firebase';
+import { db } from '../../db/firebase';
 import { collection, getDocs} from "firebase/firestore";
 
 export default function IncomeSurvey(){
@@ -30,6 +30,16 @@ export default function IncomeSurvey(){
             {eIngreso.map((e) => {
               return (
                 <div className="field is-horizontal box">
+                  <div className="block">
+                    <label name="question_id" className="label">
+                      Usuario
+                    </label>
+                    <div className="section-check">
+                      <label className="checkbox">
+                        {e.user}
+                      </label>
+                    </div>
+                  </div>
                   <div className="field-is is-normal">
                     <label name="question_id" className="label">
                       Escuela de procedencia
@@ -77,7 +87,7 @@ export default function IncomeSurvey(){
                         {e.res4}
                       </label>
                     </div>
-                    </div>
+                  </div>
                   </div>
                 </div>
               );

@@ -7,8 +7,8 @@ import styles from '../../styles/employers.module.css';
 
 
 export default function createJobs() {
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  const router = useRouter();
+  //const { register, handleSubmit, formState: { errors } } = useForm();
+  //const router = useRouter();
   console.log(errors);
 
   const alertActivated = () => {
