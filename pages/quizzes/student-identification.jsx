@@ -5,7 +5,7 @@ import MessageInfo from '../../components/messageInfo';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import { useRouter } from 'next/router';
-import { db } from '../../firebase';
+import { db } from '../../db/firebase';
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
 
 export default function StudentIdentification(){
@@ -330,7 +330,6 @@ export default function StudentIdentification(){
                         onChange={handleInputChange}
                         className="m-rght"
                         type="radio"
-                        name="answer"
                         name="res5"
                         value="Femenino"
                       />
@@ -344,7 +343,6 @@ export default function StudentIdentification(){
                         onChange={handleInputChange}
                         type="radio"
                         className="m-rght"
-                        name="answer"
                         name="res5"
                         value="Masculino"
                       />
@@ -358,7 +356,6 @@ export default function StudentIdentification(){
                         onChange={handleInputChange}
                         type="radio"
                         className="m-rght"
-                        name="answer"
                         name="res5"
                         value="Otro"
                       />

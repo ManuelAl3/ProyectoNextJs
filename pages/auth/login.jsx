@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import { login, signup, logout, useAuth } from '../../firebase';
+import { login, signup, logout, useAuth } from '../../db/firebase';
 import { useRef } from 'react';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/dist/client/router';
 
-import { db } from '../../firebase';
+import { db } from '../../db/firebase';
 import { collection, addDoc } from "firebase/firestore";
 import { async } from '@firebase/util';
 
@@ -21,7 +21,7 @@ export default function Login() {
       }else{
         console.log("¡No nay usuario activo!");
       }
-    }, []) */
+    }, 5000) */
   //-------CurrentUser-Redirect--------
 
   const emailRef = useRef();
@@ -56,7 +56,7 @@ export default function Login() {
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
               <path
                 fill="#863f92"
-                fill-opacity="1"
+                fillOpacity="1"
                 d="M0,128L30,154.7C60,181,120,235,180,218.7C240,203,300,117,360,90.7C420,64,480,96,540,106.7C600,117,660,107,720,90.7C780,75,840,53,900,37.3C960,21,1020,11,1080,16C1140,21,1200,43,1260,42.7C1320,43,1380,21,1410,10.7L1440,0L1440,0L1410,0C1380,0,1320,0,1260,0C1200,0,1140,0,1080,0C1020,0,960,0,900,0C840,0,780,0,720,0C660,0,600,0,540,0C480,0,420,0,360,0C300,0,240,0,180,0C120,0,60,0,30,0L0,0Z"
               ></path>
             </svg>
@@ -127,7 +127,7 @@ export default function Login() {
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
               <path
                 fill="#863f92"
-                fill-opacity="1"
+                fillOpacity="1"
                 d="M0,64L60,106.7C120,149,240,235,360,224C480,213,600,107,720,80C840,53,960,107,1080,117.3C1200,128,1320,96,1380,80L1440,64L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
               ></path>
             </svg>

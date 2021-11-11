@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
-import { db } from '../../firebase';
+import { db } from '../../db/firebase';
 import { collection, addDoc } from "firebase/firestore";
 
 export default function StudyEconomic(){

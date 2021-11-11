@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import { signup, logout, useAuth } from '../../firebase';
+import { signup, logout, useAuth } from '../../db/firebase';
 import { useRef } from 'react';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/dist/client/router';
 
-import { db } from '../../firebase';
+import { db } from '../../db/firebase';
 import { collection, addDoc } from "firebase/firestore";
 import { async } from '@firebase/util';
 
